@@ -1,1 +1,861 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>E.M.O.E — École de Ministère Ombre de l’Éternel</title><meta name="description" content="Formation internationale en théologie pratique."><link rel="stylesheet" href="/styles.css"></head><body><div class="bg"></div><aside class="sidebar"><div class="mark">E<span>.</span></div><a href="#accueil">⌂</a><a href="#ecole">◈</a><a href="#programmes">▦</a><a href="#contact">✉</a><button id="lang">EN</button></aside><main><nav><div class="brand">E.M.O.E <small>École de Ministère Ombre de l’Éternel</small></div><div class="navlinks"><a href="#ecole">L’école</a><a href="#programmes">Programmes</a><a href="#contact">Contact</a><button class="outline" data-open>Admissions ↗</button></div></nav><section id="accueil" class="hero"><div class="eyebrow">FORMATION · FOI · LEADERSHIP</div><h1>Former une génération<br><em>pour servir</em> le monde.</h1><p>Une école internationale de théologie pratique, dédiée à l’excellence académique et à l’impact du ministère.</p><div class="actions"><button class="primary" data-open>Commencer une candidature ↗</button><a class="textlink" href="#programmes">Découvrir les programmes ↓</a></div><div class="stats"><div><b>09</b><span>Pays représentés</span></div><div><b>03</b><span>Cycles académiques</span></div><div><b>FR · EN</b><span>Formation bilingue</span></div></div></section><section id="ecole" class="section"><div><div class="eyebrow">NOTRE MISSION</div><h2>Une formation solide.<br><em>Une vocation durable.</em></h2></div><p>E.M.O.E accompagne les serviteurs de Dieu, les responsables d’églises et les étudiants qui souhaitent approfondir leur connaissance biblique, développer leur leadership et servir avec intégrité.</p></section><section id="programmes" class="section programs"><div class="sectionhead"><div><div class="eyebrow">PARCOURS ACADÉMIQUES</div><h2>Choisissez votre<br><em>prochain niveau.</em></h2></div><div class="controls"><button id="prev">←</button><button id="next">→</button></div></div><div class="track" id="track"><article><span>01 / LICENCE</span><h3>Théologie pratique</h3><p>Introduction à la théologie, homilétique, herméneutique, eschatologie, angélologie, démonologie, finances d’église et leadership biblique.</p><a href="#" data-open>Postuler ↗</a></article><article><span>02 / MASTER</span><h3>Théologie pratique</h3><p>Approfondissement académique, recherche, analyse biblique et développement stratégique du ministère.</p><a href="#" data-open>Postuler ↗</a></article><article><span>03 / DOCTORAT</span><h3>Théologie pratique</h3><p>Recherche avancée, contribution scientifique et accompagnement de projets de transformation ecclésiale.</p><a href="#" data-open>Postuler ↗</a></article></div></section><section id="contact" class="contact"><div><div class="eyebrow">ADMISSIONS INTERNATIONALES</div><h2>Votre appel mérite<br><em>une préparation d’excellence.</em></h2></div><button class="primary" data-open>Ouvrir le formulaire ↗</button></section><footer><span>© E.M.O.E — Ombre de l’Éternel</span><span>RDC · Ouganda · Angola · Zambie · France · Canada · Angleterre · Chypre · États-Unis</span></footer></main><dialog id="modal"><form id="admission"><button type="button" class="close" id="close">×</button><div class="eyebrow">CANDIDATURE E.M.O.E</div><h2>Formulaire d’admission</h2><p class="muted">Les informations seront transmises à l’administration.</p><div class="formgrid"><label>Nom<input name="nom" required></label><label>Prénoms<input name="prenoms" required></label><label>Post-nom<input name="postnom" required></label><label>Date de naissance<input type="date" name="date" required></label><label>Téléphone<input name="tel" type="tel" required></label><label>Email<input name="email" type="email" required></label><label>Pays<input name="pays" required></label><label>Ville<input name="ville" required></label><label class="wide">Église de provenance<input name="eglise" required></label><label class="wide">Fonction dans l’église<input name="fonction" required></label></div><button class="primary widebtn" type="submit">Envoyer ma candidature ↗</button><p id="status" class="status" aria-live="polite"></p></form></dialog><script src="/app.js"></script></body></html>
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>E.M.O.E — École de Ministère Ombre de l’Éternel</title>
+
+  <meta name="description" content="École internationale chrétienne évangélique de théologie pratique.">
+
+  <link rel="stylesheet" href="/styles.css">
+
+</head>
+
+<body>
+
+  <div class="bg"></div>
+
+  <aside class="sidebar">
+
+    <div class="mark">E<span>.</span></div>
+
+    <a href="#accueil" aria-label="Accueil">⌂</a>
+
+    <a href="#ecole" aria-label="À propos">◈</a>
+
+    <a href="#programmes" aria-label="Programmes">▦</a>
+
+    <a href="#admission-info" aria-label="Admissions">✓</a>
+
+    <a href="#contact" aria-label="Contact">✉</a>
+
+    <button id="lang" type="button">EN</button>
+
+  </aside>
+
+  <main>
+
+    <nav>
+
+      <div class="brand">
+
+        <img src="/logo-emoe.jpg" alt="Logo officiel E.M.O.E">
+
+        <span>
+
+          E.M.O.E
+
+          <small>École de Ministère Ombre de l’Éternel</small>
+
+        </span>
+
+      </div>
+
+      <div class="navlinks">
+
+        <a href="#ecole">L’école</a>
+
+        <a href="#programmes">Programmes</a>
+
+        <a href="#admission-info">Admissions</a>
+
+        <a href="#contact">Contact</a>
+
+        <button class="outline" type="button" data-open>
+
+          Candidature ↗
+
+        </button>
+
+      </div>
+
+    </nav>
+
+    <section id="accueil" class="hero">
+
+      <div class="eyebrow">FORMATION · FOI · LEADERSHIP</div>
+
+      <h1>
+
+        Former une génération
+
+        <br>
+
+        <em>pour servir</em> le monde.
+
+      </h1>
+
+      <p>
+
+        Une école internationale chrétienne évangélique de théologie pratique,
+
+        dédiée à l’excellence académique, à la maturité spirituelle et à
+
+        l’impact du ministère.
+
+      </p>
+
+      <div class="actions">
+
+        <button class="primary" type="button" data-open>
+
+          Commencer une candidature ↗
+
+        </button>
+
+        <a class="textlink" href="#programmes">
+
+          Découvrir les programmes ↓
+
+        </a>
+
+      </div>
+
+      <div class="stats">
+
+        <div>
+
+          <b>09</b>
+
+          <span>Pays représentés</span>
+
+        </div>
+
+        <div>
+
+          <b>03</b>
+
+          <span>Cycles académiques</span>
+
+        </div>
+
+        <div>
+
+          <b>FR · EN</b>
+
+          <span>Formation bilingue</span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="ecole" class="section">
+
+      <div>
+
+        <div class="eyebrow">À PROPOS DE L’E.M.O.E</div>
+
+        <h2>
+
+          Une formation solide.
+
+          <br>
+
+          <em>Une vocation durable.</em>
+
+        </h2>
+
+      </div>
+
+      <div class="content-copy">
+
+        <p>
+
+          L’École de Ministère Ombre de l’Éternel accompagne les serviteurs de
+
+          Dieu, les responsables d’églises et les étudiants qui souhaitent
+
+          approfondir leur connaissance biblique, développer leur leadership
+
+          et servir avec intégrité.
+
+        </p>
+
+        <p>
+
+          L’E.M.O.E est une institution chrétienne évangélique. Son
+
+          enseignement repose sur la fidélité aux Saintes Écritures, la
+
+          formation du caractère et la préparation pratique au service de Dieu
+
+          et de l’Église.
+
+        </p>
+
+      </div>
+
+    </section>
+
+    <section class="section split-section">
+
+      <div>
+
+        <div class="eyebrow">NOTRE IDENTITÉ</div>
+
+        <h2>
+
+          Foi, discipline
+
+          <br>
+
+          <em>et vie communautaire.</em>
+
+        </h2>
+
+      </div>
+
+      <div class="info-panel">
+
+        <p>
+
+          Tous les étudiants doivent signer et respecter strictement une
+
+          Déclaration de foi — <strong>Statement of Faith</strong> — ainsi
+
+          qu’un Engagement de vie en communauté —
+
+          <strong>Community Covenant</strong>.
+
+        </p>
+
+        <p>
+
+          Ces engagements définissent les valeurs chrétiennes évangéliques,
+
+          le comportement attendu et le mode de vie quotidien au sein de
+
+          l’établissement.
+
+        </p>
+
+      </div>
+
+    </section>
+
+    <section id="programmes" class="section programs">
+
+      <div class="sectionhead">
+
+        <div>
+
+          <div class="eyebrow">PARCOURS ACADÉMIQUES</div>
+
+          <h2>
+
+            Choisissez votre
+
+            <br>
+
+            <em>prochain niveau.</em>
+
+          </h2>
+
+        </div>
+
+        <div class="controls">
+
+          <button id="prev" type="button" aria-label="Programme précédent">
+
+            ←
+
+          </button>
+
+          <button id="next" type="button" aria-label="Programme suivant">
+
+            →
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="track" id="track">
+
+        <article>
+
+          <span>01 / LICENCE</span>
+
+          <h3>Théologie pratique</h3>
+
+          <p>
+
+            Une formation fondamentale pour développer une base biblique,
+
+            théologique et pratique solide.
+
+          </p>
+
+          <a href="#licence" data-program="licence">
+
+            Découvrir la Licence ↗
+
+          </a>
+
+        </article>
+
+        <article>
+
+          <span>02 / MASTER</span>
+
+          <h3>Théologie pratique</h3>
+
+          <p>
+
+            Un parcours d’approfondissement destiné aux titulaires d’une
+
+            Licence en théologie pratique.
+
+          </p>
+
+          <a href="#master" data-program="master">
+
+            Découvrir le Master ↗
+
+          </a>
+
+        </article>
+
+        <article>
+
+          <span>03 / DOCTORAT</span>
+
+          <h3>Théologie pratique</h3>
+
+          <p>
+
+            Un parcours de recherche avancée destiné aux titulaires d’un
+
+            Master en théologie pratique.
+
+          </p>
+
+          <a href="#doctorat" data-program="doctorat">
+
+            Découvrir le Doctorat ↗
+
+          </a>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <section id="licence" class="section detail-section">
+
+      <div>
+
+        <div class="eyebrow">01 · LICENCE</div>
+
+        <h2>
+
+          Licence en
+
+          <br>
+
+          <em>théologie pratique.</em>
+
+        </h2>
+
+      </div>
+
+      <div class="subject-grid">
+
+        <div>Introduction à la théologie</div>
+
+        <div>Homilétique</div>
+
+        <div>Gestion financière d’une église locale</div>
+
+        <div>Herméneutique</div>
+
+        <div>Eschatologie</div>
+
+        <div>Angélologie</div>
+
+        <div>Démonologie</div>
+
+        <div>Leadership biblique</div>
+
+      </div>
+
+    </section>
+
+    <section id="master" class="section detail-section">
+
+      <div>
+
+        <div class="eyebrow">02 · MASTER</div>
+
+        <h2>
+
+          Master en
+
+          <br>
+
+          <em>théologie pratique.</em>
+
+        </h2>
+
+      </div>
+
+      <div class="info-panel">
+
+        <p>
+
+          Pour postuler au Master, il est obligatoire d’avoir obtenu une
+
+          <strong>Licence en théologie pratique</strong>.
+
+        </p>
+
+        <p>
+
+          Le Master permet d’approfondir la recherche, l’analyse biblique,
+
+          la réflexion théologique et le développement stratégique du ministère.
+
+        </p>
+
+      </div>
+
+    </section>
+
+    <section id="doctorat" class="section detail-section">
+
+      <div>
+
+        <div class="eyebrow">03 · DOCTORAT</div>
+
+        <h2>
+
+          Doctorat en
+
+          <br>
+
+          <em>théologie pratique.</em>
+
+        </h2>
+
+      </div>
+
+      <div class="info-panel">
+
+        <p>
+
+          Pour postuler au Doctorat, il est obligatoire d’avoir obtenu un
+
+          <strong>Master en théologie pratique</strong>.
+
+        </p>
+
+        <p>
+
+          Le Doctorat est orienté vers la recherche avancée, la contribution
+
+          scientifique et l’accompagnement de projets de transformation
+
+          ecclésiale.
+
+        </p>
+
+      </div>
+
+    </section>
+
+    <section id="admission-info" class="section admission-section">
+
+      <div>
+
+        <div class="eyebrow">ADMISSIONS</div>
+
+        <h2>
+
+          Préparez votre
+
+          <br>
+
+          <em>prochaine étape.</em>
+
+        </h2>
+
+      </div>
+
+      <div class="admission-grid">
+
+        <div class="info-panel">
+
+          <h3>Conditions générales</h3>
+
+          <p>
+
+            Chaque étudiant doit accepter l’identité chrétienne évangélique
+
+            de l’E.M.O.E.
+
+          </p>
+
+          <p>
+
+            La signature du Statement of Faith et du Community Covenant est
+
+            obligatoire.
+
+          </p>
+
+        </div>
+
+        <div class="info-panel">
+
+          <h3>Documents à fournir</h3>
+
+          <ul>
+
+            <li>Lettre d’intention</li>
+
+            <li>Pièce d’identité</li>
+
+            <li>Photo d’identité format passeport</li>
+
+          </ul>
+
+        </div>
+
+        <div class="info-panel">
+
+          <h3>Frais</h3>
+
+          <p>
+
+            Frais d’inscription :
+
+            <strong>10 $</strong>
+
+          </p>
+
+          <p>
+
+            Frais de formation :
+
+            <strong>0 $</strong>
+
+          </p>
+
+        </div>
+
+        <div class="info-panel">
+
+          <h3>Calendrier</h3>
+
+          <p>
+
+            Ouverture des inscriptions :
+
+            <strong>Décembre</strong>
+
+          </p>
+
+          <p>
+
+            Début des cours :
+
+            <strong>Mars</strong>
+
+          </p>
+
+        </div>
+
+      </div>
+
+      <button class="primary" type="button" data-open>
+
+        Ouvrir le formulaire d’admission ↗
+
+      </button>
+
+    </section>
+
+    <section class="section countries-section">
+
+      <div>
+
+        <div class="eyebrow">PRÉSENCE INTERNATIONALE</div>
+
+        <h2>
+
+          Une école au service
+
+          <br>
+
+          <em>des nations.</em>
+
+        </h2>
+
+      </div>
+
+      <div class="country-list">
+
+        <span>RDC</span>
+
+        <span>Ouganda</span>
+
+        <span>Angola</span>
+
+        <span>Zambie</span>
+
+        <span>France</span>
+
+        <span>Canada</span>
+
+        <span>Angleterre</span>
+
+        <span>Chypre</span>
+
+        <span>États-Unis</span>
+
+      </div>
+
+    </section>
+
+    <section id="contact" class="contact">
+
+      <div>
+
+        <div class="eyebrow">CONTACT · ADMISSIONS INTERNATIONALES</div>
+
+        <h2>
+
+          Votre appel mérite
+
+          <br>
+
+          <em>une préparation d’excellence.</em>
+
+        </h2>
+
+        <p>
+
+          <strong>Adresse :</strong> Londres, Angleterre
+
+        </p>
+
+        <p>
+
+          <strong>Téléphone :</strong>
+
+          <a href="tel:+33670985008">+33 6 70 98 50 08</a>
+
+        </p>
+
+        <p>
+
+          <strong>WhatsApp :</strong>
+
+          <a href="https://wa.me/33629606103" target="_blank" rel="noopener">
+
+            +33 6 29 60 61 03
+
+          </a>
+
+        </p>
+
+        <p>
+
+          <strong>Email :</strong>
+
+          <a href="mailto:ecoleombredeleternel@gmail.com">
+
+            ecoleombredeleternel@gmail.com
+
+          </a>
+
+        </p>
+
+      </div>
+
+      <button class="primary" type="button" data-open>
+
+        Ouvrir le formulaire ↗
+
+      </button>
+
+    </section>
+
+    <section class="section social-section">
+
+      <div>
+
+        <div class="eyebrow">RÉSEAUX SOCIAUX</div>
+
+        <h2>
+
+          Restons
+
+          <br>
+
+          <em>connectés.</em>
+
+        </h2>
+
+      </div>
+
+      <div class="social-list">
+
+        <p>Facebook : École Ministère Ombre L’Éternel</p>
+
+        <p>Instagram : École de Ministère Ombre de l’Éternel</p>
+
+        <p>YouTube : École de Ministère Ombre de l’Éternel</p>
+
+      </div>
+
+    </section>
+
+    <footer>
+
+      <span>© E.M.O.E — Ombre de l’Éternel</span>
+
+      <span>
+
+        RDC · Ouganda · Angola · Zambie · France · Canada · Angleterre ·
+
+        Chypre · États-Unis
+
+      </span>
+
+    </footer>
+
+  </main>
+
+  <dialog id="modal">
+
+    <form id="admission">
+
+      <button type="button" class="close" id="close" aria-label="Fermer">
+
+        ×
+
+      </button>
+
+      <div class="eyebrow">CANDIDATURE E.M.O.E</div>
+
+      <h2>Formulaire d’admission</h2>
+
+      <p class="muted">
+
+        Remplissez les informations ci-dessous. Votre candidature sera
+
+        transmise à l’administration de l’E.M.O.E.
+
+      </p>
+
+      <div class="formgrid">
+
+        <label>
+
+          Nom
+
+          <input name="nom" required>
+
+        </label>
+
+        <label>
+
+          Prénoms
+
+          <input name="prenoms" required>
+
+        </label>
+
+        <label>
+
+          Post-nom
+
+          <input name="postNom" required>
+
+        </label>
+
+        <label>
+
+          Date de naissance
+
+          <input type="date" name="dateNaissance" required>
+
+        </label>
+
+        <label>
+
+          Téléphone
+
+          <input name="telephone" type="tel" required>
+
+        </label>
+
+        <label>
+
+          Email
+
+          <input name="email" type="email" required>
+
+        </label>
+
+        <label>
+
+          Pays
+
+          <input name="pays" required>
+
+        </label>
+
+        <label>
+
+          Ville
+
+          <input name="ville" required>
+
+        </label>
+
+        <label class="wide">
+
+          Église de provenance
+
+          <input name="eglise" required>
+
+        </label>
+
+        <label class="wide">
+
+          Fonction dans l’église
+
+          <input name="fonction" required>
+
+        </label>
+
+      </div>
+
+      <button class="primary widebtn" type="submit">
+
+        Envoyer ma candidature ↗
+
+      </button>
+
+      <p id="status" class="status" aria-live="polite"></p>
+
+    </form>
+
+  </dialog>
+
+  <script src="/app.js"></script>
+
+</body>
+
+</html>
