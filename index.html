@@ -1307,54 +1307,73 @@
       }
     });
 
-    const translations = {
-      fr: {
-        school: "École de Ministère Ombre de l’Éternel",
-        schoolShort: "L’école",
-        programs: "Programmes",
-        admissions: "Admissions",
-        contact: "Contact",
-        application: "Candidature ↗",
-        heroEyebrow: "FORMATION · FOI · LEADERSHIP",
-        heroTitle: "Former une génération<br><em>pour servir</em> le monde.",
-        heroText: "Une école internationale chrétienne évangélique de théologie pratique, dédiée à l’excellence académique, à la maturité spirituelle et à l’impact du ministère."
-      },
-      en: {
-        school: "Eternal Shadow Ministry School",
-        schoolShort: "The school",
-        programs: "Programs",
-        admissions: "Admissions",
-        contact: "Contact",
-        application: "Apply ↗",
-        heroEyebrow: "TRAINING · FAITH · LEADERSHIP",
-        heroTitle: "Raising a generation<br><em>to serve</em> the world.",
-        heroText: "An international evangelical Christian school of practical theology, dedicated to academic excellence, spiritual maturity and ministry impact."
-      }
-    };
+   const translations = {
+  fr: {
+    school: "École de Ministère Ombre de l’Éternel",
+    schoolShort: "L’école",
+    programs: "Programmes",
+    admissions: "Admissions",
+    contact: "Contact",
+    application: "Candidature ↗",
+    heroEyebrow: "FORMATION · FOI · LEADERSHIP",
+    heroTitle: "Former une génération<br><em>pour servir</em> le monde.",
+    heroText:
+      "Une école internationale chrétienne évangélique de théologie pratique, dédiée à l’excellence académique, à la maturité spirituelle et à l’impact du ministère."
+  },
 
-    let currentLanguage = "fr";
+  en: {
+    school: "Eternal Shadow Ministry School",
+    schoolShort: "The school",
+    programs: "Programs",
+    admissions: "Admissions",
+    contact: "Contact",
+    application: "Apply ↗",
+    heroEyebrow: "TRAINING · FAITH · LEADERSHIP",
+    heroTitle: "Raising a generation<br><em>to serve</em> the world.",
+    heroText:
+      "An international evangelical Christian school of practical theology, dedicated to academic excellence, spiritual maturity and ministry impact."
+  }
+};
 
-    languageButton.addEventListener("click", () => {
-      currentLanguage = currentLanguage === "fr" ? "en" : "fr";
-      languageButton.textContent = currentLanguage === "fr" ? "EN" : "FR";
-      document.documentElement.lang = currentLanguage;
+let currentLanguage = "fr";
 
-      const t = translations[currentLanguage];
+languageButton.addEventListener("click", () => {
+  currentLanguage = currentLanguage === "fr" ? "en" : "fr";
 
-      document.querySelector(".brand small").textContent = t.school;
-      document.querySelectorAll(".navlinks a")[0].textContent = t.schoolShort;
-      document.querySelectorAll(".navlinks a")[1].textContent = t.programs;
-      document.querySelectorAll(".navlinks a")[2].textContent = t.admissions;
-      document.querySelectorAll(".navlinks a")[3].textContent = t.contact;
-      document.querySelectorAll("[data-open]").forEach((button) => {
-        button.textContent = t.application;
-      });
+  languageButton.textContent =
+    currentLanguage === "fr" ? "EN" : "FR";
 
-      document.querySelector(".hero .eyebrow").textContent = t.heroEyebrow;
-      document.querySelector(".hero h1").innerHTML = t.heroTitle;
-      document.querySelector(".hero > p").textContent = t.heroText;
-    });
+  document.documentElement.lang = currentLanguage;
 
+  const t = translations[currentLanguage];
+
+  document.querySelector(".brand small").textContent = t.school;
+
+  document.querySelectorAll(".navlinks a")[0].textContent =
+    t.schoolShort;
+
+  document.querySelectorAll(".navlinks a")[1].textContent =
+    t.programs;
+
+  document.querySelectorAll(".navlinks a")[2].textContent =
+    t.admissions;
+
+  document.querySelectorAll(".navlinks a")[3].textContent =
+    t.contact;
+
+  document.querySelectorAll("[data-open]").forEach((button) => {
+    button.textContent = t.application;
+  });
+
+  document.querySelector(".hero .eyebrow").textContent =
+    t.heroEyebrow;
+
+  document.querySelector(".hero h1").innerHTML =
+    t.heroTitle;
+
+  document.querySelector(".hero > p").textContent =
+    t.heroText;
+});
     admissionForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
