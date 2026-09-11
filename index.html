@@ -1,669 +1,1405 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E.M.O.E — École de Ministère Ombre de l’Éternel</title>
+  <meta name="description" content="École internationale chrétienne évangélique de théologie pratique.">
 
-  <title>Eloge Mushimi — Portfolio</title>
-  <meta
-    name="description"
-    content="Portfolio personnel d'Eloge Mushimi : création de sites web, design UI/UX et solutions digitales."
-  />
+  <style>
+    :root {
+      --bg: #0b0d12;
+      --surface: #121620;
+      --surface-light: #1a202d;
+      --text: #f5f1e8;
+      --muted: #a9afbd;
+      --gold: #d8b477;
+      --gold-light: #f0d7a7;
+      --border: rgba(255,255,255,.12);
+      --max: 1180px;
+    }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  />
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  <link rel="stylesheet" href="styles.css" />
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(216,180,119,.12), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 55px 55px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 50%;
+      left: 22px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      transform: translateY(-50%);
+    }
+
+    .mark {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: rgba(18,22,32,.9);
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .mark span {
+      color: var(--text);
+    }
+
+    .sidebar a,
+    #lang {
+      display: grid;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      background: transparent;
+      color: var(--muted);
+      font-size: 15px;
+      transition: .2s ease;
+    }
+
+    .sidebar a:hover,
+    .sidebar a:focus-visible,
+    #lang:hover,
+    #lang:focus-visible {
+      border-color: var(--gold);
+      color: var(--gold);
+      outline: none;
+    }
+
+    #lang {
+      border: 1px solid var(--border);
+    }
+
+    main {
+      width: min(100% - 130px, var(--max));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 15;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 88px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11,13,18,.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: var(--surface-light);
+    }
+
+    .brand > span {
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+
+    .brand small {
+      display: block;
+      max-width: 260px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: .04em;
+      line-height: 1.4;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 24px;
+    }
+
+    .navlinks a {
+      color: var(--muted);
+      font-size: 13px;
+      transition: color .2s ease;
+    }
+
+    .navlinks a:hover,
+    .navlinks a:focus-visible {
+      color: var(--gold);
+      outline: none;
+    }
+
+    .outline,
+    .primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .outline {
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold-light);
+    }
+
+    .outline:hover,
+    .outline:focus-visible {
+      background: var(--gold);
+      color: #111;
+      outline: none;
+    }
+
+    .primary {
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #111;
+    }
+
+    .primary:hover,
+    .primary:focus-visible {
+      background: var(--gold-light);
+      border-color: var(--gold-light);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .hero {
+      display: flex;
+      min-height: 720px;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 0 80px;
+    }
+
+    .eyebrow {
+      margin-bottom: 22px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .2em;
+    }
+
+    h1,
+    h2 {
+      max-width: 850px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1.05;
+    }
+
+    h1 {
+      font-size: clamp(44px, 7vw, 86px);
+    }
+
+    h2 {
+      font-size: clamp(34px, 5vw, 62px);
+    }
+
+    h1 em,
+    h2 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero > p {
+      max-width: 650px;
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      margin-top: 34px;
+    }
+
+    .textlink {
+      color: var(--gold-light);
+      font-size: 14px;
+    }
+
+    .textlink:hover {
+      text-decoration: underline;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 720px;
+      gap: 32px;
+      margin-top: 80px;
+    }
+
+    .stats div {
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+    }
+
+    .stats b {
+      display: block;
+      color: var(--gold);
+      font-size: 32px;
+      font-weight: 400;
+    }
+
+    .stats span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section {
+      border-top: 1px solid var(--border);
+      padding: 110px 0;
+    }
+
+    .section,
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 70px;
+    }
+
+    .content-copy,
+    .info-panel {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .content-copy p + p,
+    .info-panel p + p {
+      margin-top: 22px;
+    }
+
+    .info-panel {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(18,22,32,.65);
+      padding: 28px;
+    }
+
+    .info-panel h3 {
+      margin-bottom: 18px;
+      color: var(--gold-light);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .info-panel strong {
+      color: var(--text);
+    }
+
+    .sectionhead {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 25px;
+      grid-column: 1 / -1;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+    }
+
+    .controls button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--gold);
+      font-size: 20px;
+    }
+
+    .controls button:hover,
+    .controls button:focus-visible {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: #111;
+      outline: none;
+    }
+
+    .track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      grid-column: 1 / -1;
+    }
+
+    .track article {
+      display: flex;
+      min-height: 310px;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(26,32,45,.9), rgba(18,22,32,.65));
+      padding: 30px;
+    }
+
+    .track article > span {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    .track h3 {
+      margin-top: 45px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 29px;
+      font-weight: 400;
+    }
+
+    .track p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .track a {
+      margin-top: auto;
+      padding-top: 30px;
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .track a:hover {
+      text-decoration: underline;
+    }
+
+    .detail-section {
+      align-items: start;
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .subject-grid div {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(18,22,32,.7);
+      padding: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .admission-section {
+      display: block;
+    }
+
+    .admission-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 50px;
+    }
+
+    .admission-grid .info-panel {
+      padding: 24px;
+    }
+
+    .admission-grid ul {
+      padding-left: 18px;
+    }
+
+    .admission-section > .primary {
+      margin-top: 35px;
+    }
+
+    .countries-section {
+      align-items: start;
+    }
+
+    .country-list {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .country-list span {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 12px 18px;
+      color: var(--gold-light);
+      font-size: 13px;
+    }
+
+    .contact {
+      border-top: 1px solid var(--border);
+      padding: 110px 0;
+    }
+
+    .contact p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact a {
+      color: var(--gold-light);
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    .contact > .primary {
+      align-self: center;
+      justify-self: start;
+    }
+
+    .social-section {
+      align-items: start;
+    }
+
+    .social-list p {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      border-top: 1px solid var(--border);
+      padding: 30px 0 45px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    dialog {
+      width: min(680px, calc(100% - 30px));
+      max-height: 90vh;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 0;
+    }
+
+    dialog::backdrop {
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(5px);
+    }
+
+    dialog form {
+      position: relative;
+      overflow-y: auto;
+      max-height: 90vh;
+      padding: 38px;
+    }
+
+    .close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--text);
+      font-size: 22px;
+    }
+
+    .close:hover,
+    .close:focus-visible {
+      border-color: var(--gold);
+      color: var(--gold);
+      outline: none;
+    }
+
+    dialog h2 {
+      max-width: 500px;
+      font-size: 42px;
+    }
+
+    .muted {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .formgrid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .formgrid label {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .formgrid label.wide,
+    .widebtn {
+      grid-column: 1 / -1;
+    }
+
+    .formgrid input {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #0d1017;
+      color: var(--text);
+      padding: 0 13px;
+      outline: none;
+    }
+
+    .formgrid input:focus {
+      border-color: var(--gold);
+    }
+
+    .widebtn {
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    .status {
+      min-height: 24px;
+      margin-top: 18px;
+      color: var(--gold-light);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1000px) {
+      .sidebar {
+        display: none;
+      }
+
+      main {
+        width: min(100% - 40px, var(--max));
+      }
+
+      .navlinks {
+        gap: 14px;
+      }
+
+      .navlinks a {
+        display: none;
+      }
+
+      .section,
+      .contact {
+        gap: 35px;
+      }
+
+      .admission-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        min-height: 76px;
+      }
+
+      .brand small {
+        max-width: 190px;
+        font-size: 9px;
+      }
+
+      .outline {
+        min-height: 40px;
+        padding: 0 14px;
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 85px 0;
+      }
+
+      .hero > p {
+        font-size: 15px;
+      }
+
+      .stats {
+        gap: 15px;
+        margin-top: 55px;
+      }
+
+      .stats b {
+        font-size: 25px;
+      }
+
+      .stats span {
+        display: block;
+        font-size: 10px;
+      }
+
+      .section,
+      .contact {
+        display: block;
+        padding: 75px 0;
+      }
+
+      .content-copy,
+      .info-panel,
+      .section > .info-panel,
+      .section > .subject-grid {
+        margin-top: 35px;
+      }
+
+      .sectionhead {
+        display: block;
+      }
+
+      .controls {
+        margin-top: 25px;
+      }
+
+      .track {
+        grid-template-columns: 1fr;
+        margin-top: 25px;
+      }
+
+      .track article {
+        min-height: 270px;
+      }
+
+      .admission-grid {
+        grid-template-columns: 1fr;
+        margin-top: 35px;
+      }
+
+      .admission-section > .primary {
+        width: 100%;
+      }
+
+      .country-list {
+        margin-top: 35px;
+      }
+
+      .contact > .primary {
+        width: 100%;
+        margin-top: 35px;
+      }
+
+      .social-list {
+        margin-top: 35px;
+      }
+
+      footer {
+        flex-direction: column;
+      }
+
+      .formgrid {
+        grid-template-columns: 1fr;
+      }
+
+      .formgrid label.wide,
+      .widebtn {
+        grid-column: auto;
+      }
+
+      dialog form {
+        padding: 30px 22px;
+      }
+
+      dialog h2 {
+        font-size: 34px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container">
-      <nav class="navbar" aria-label="Navigation principale">
-        <a class="logo" href="#home" aria-label="Retour à l'accueil">
-          <span class="logo-star" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z"
-                fill="currentColor"
-              />
-            </svg>
-          </span>
-          <span>ELOGE.</span>
-        </a>
+  <div class="bg"></div>
 
-        <ul class="nav-links">
-          <li>
-            <a href="#home" data-i18n="navHome">Accueil</a>
-          </li>
-          <li>
-            <a href="#about" data-i18n="navAbout">À propos</a>
-          </li>
-          <li>
-            <a href="#services" data-i18n="navServices">Services</a>
-          </li>
-          <li>
-            <a href="#projects" data-i18n="navProjects">Projets</a>
-          </li>
-          <li>
-            <a href="#contact" data-i18n="navContact">Contact</a>
-          </li>
-        </ul>
-
-        <div class="nav-actions">
-          <div class="language-switcher" aria-label="Choisir la langue">
-            <button
-              class="language-button active"
-              type="button"
-              data-language="fr"
-              aria-pressed="true"
-              title="Français"
-            >
-              🇫🇷
-            </button>
-
-            <button
-              class="language-button"
-              type="button"
-              data-language="en"
-              aria-pressed="false"
-              title="English"
-            >
-              🇬🇧
-            </button>
-          </div>
-
-          <button
-            class="menu-toggle"
-            type="button"
-            aria-label="Ouvrir le menu"
-            aria-expanded="false"
-            aria-controls="main-navigation"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 6H20M4 12H20M4 18H20" />
-            </svg>
-          </button>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <aside class="sidebar" aria-label="Navigation rapide">
+    <div class="mark">E<span>.</span></div>
+    <a href="#accueil" aria-label="Accueil">⌂</a>
+    <a href="#ecole" aria-label="À propos">◈</a>
+    <a href="#programmes" aria-label="Programmes">▦</a>
+    <a href="#admission-info" aria-label="Admissions">✓</a>
+    <a href="#contact" aria-label="Contact">✉</a>
+    <button id="lang" type="button" aria-label="Changer de langue">EN</button>
+  </aside>
 
   <main>
-    <!-- Hero -->
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content reveal">
-            <div class="hero-badge">
-              <span></span>
-              <span data-i18n="heroBadge">
-                Disponible pour de nouveaux projets
-              </span>
-            </div>
+    <nav>
+      <a class="brand" href="#accueil">
+        <img src="logo-emoe.jpg" alt="Logo officiel E.M.O.E">
+        <span>
+          E.M.O.E
+          <small>École de Ministère Ombre de l’Éternel</small>
+        </span>
+      </a>
 
-            <h1 class="hero-title">
-              <span data-i18n="heroTitle">
-                Créons quelque chose de vraiment exceptionnel.
-              </span>
-            </h1>
+      <div class="navlinks">
+        <a href="#ecole">L’école</a>
+        <a href="#programmes">Programmes</a>
+        <a href="#admission-info">Admissions</a>
+        <a href="#contact">Contact</a>
+        <button class="outline" type="button" data-open>
+          Candidature ↗
+        </button>
+      </div>
+    </nav>
 
-            <p class="hero-description" data-i18n="heroDescription">
-              Je conçois des expériences digitales modernes, rapides et élégantes
-              pour donner vie aux idées et aux entreprises.
-            </p>
+    <section id="accueil" class="hero">
+      <div class="eyebrow">FORMATION · FOI · LEADERSHIP</div>
 
-            <div class="hero-buttons">
-              <a class="btn btn-primary" href="#projects">
-                <span data-i18n="heroPrimary">Découvrir mes projets</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12H19M12 5L19 12L12 19" />
-                </svg>
-              </a>
+      <h1>
+        Former une génération
+        <br>
+        <em>pour servir</em> le monde.
+      </h1>
 
-              <a class="btn btn-secondary" href="#contact">
-                <span data-i18n="heroSecondary">Me contacter</span>
-              </a>
-            </div>
+      <p>
+        Une école internationale chrétienne évangélique de théologie pratique,
+        dédiée à l’excellence académique, à la maturité spirituelle et à
+        l’impact du ministère.
+      </p>
 
-            <div class="hero-socials" aria-label="Réseaux sociaux">
-              <a
-                class="social-link"
-                href="https://github.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.48 2 2 6.58 2 12.26C2 16.78 4.87 20.6 8.84 21.95C9.34 22.05 9.52 21.73 9.52 21.45V19.72C6.73 20.35 6.14 18.34 6.14 18.34C5.68 17.13 5.03 16.81 5.03 16.81C4.12 16.17 5.1 16.18 5.1 16.18C6.1 16.25 6.63 17.24 6.63 17.24C7.52 18.8 8.96 18.36 9.55 18.1C9.64 17.43 9.9 16.98 10.18 16.73C7.95 16.47 5.61 15.58 5.61 11.73C5.61 10.63 5.99 9.73 6.63 9.03C6.53 8.78 6.19 7.76 6.72 6.38C6.72 6.38 7.55 6.11 9.48 7.45C10.27 7.22 11.12 7.1 11.97 7.1C12.82 7.1 13.67 7.22 14.46 7.45C16.39 6.11 17.22 6.38 17.22 6.38C17.75 7.76 17.41 8.78 17.31 9.03C17.95 9.73 18.33 10.63 18.33 11.73C18.33 15.59 15.98 16.46 13.75 16.72C14.1 17.03 14.41 17.64 14.41 18.57V21.45C14.41 21.73 14.59 22.05 15.1 21.95C19.07 20.6 21.94 16.78 21.94 12.26C21.94 6.58 17.46 2 12 2Z"
-                  />
-                </svg>
-              </a>
+      <div class="actions">
+        <button class="primary" type="button" data-open>
+          Commencer une candidature ↗
+        </button>
 
-              <a
-                class="social-link"
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M5.2 3.5C5.2 4.88 4.08 6 2.7 6S.2 4.88.2 3.5S1.32 1 2.7 1S5.2 2.12 5.2 3.5ZM.5 8H4.9V23H.5V8ZM7.5 8H11.7V10.05H11.76C12.34 8.95 13.76 7.8 16.05 7.8C20.5 7.8 21.32 10.73 21.32 14.54V23H16.94V15.49C16.94 13.7 16.91 11.4 14.45 11.4C11.95 11.4 11.57 13.35 11.57 15.36V23H7.5V8Z"
-                  />
-                </svg>
-              </a>
+        <a class="textlink" href="#programmes">
+          Découvrir les programmes ↓
+        </a>
+      </div>
 
-              <a
-                class="social-link"
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                </svg>
-              </a>
-            </div>
-          </div>
+      <div class="stats">
+        <div>
+          <b>09</b>
+          <span>Pays représentés</span>
+        </div>
 
-          <div class="hero-visual reveal" aria-hidden="true">
-            <div class="hero-orbit"></div>
+        <div>
+          <b>03</b>
+          <span>Cycles académiques</span>
+        </div>
 
-            <div class="hero-card">
-              <div class="hero-card-top">
-                <div class="hero-card-dots">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-
-                <span>01 / 04</span>
-              </div>
-
-              <div class="hero-card-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                  <path d="M4 5H20V19H4Z" />
-                  <path d="M4 9H20M8 5V9M12 5V9M16 5V9" />
-                  <path d="M8 13H16M8 16H13" />
-                </svg>
-              </div>
-
-              <h3>Digital creativity</h3>
-              <p>
-                Design, technology and strategy réunis pour créer des expériences
-                uniques.
-              </p>
-            </div>
-
-            <div class="floating-chip chip-one">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 3L14.7 9.3L21 12L14.7 14.7L12 21L9.3 14.7L3 12L9.3 9.3L12 3Z" />
-              </svg>
-              Creative
-            </div>
-
-            <div class="floating-chip chip-two">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 17L10 11L14 15L21 8" />
-                <path d="M15 8H21V14" />
-              </svg>
-              Performance
-            </div>
-          </div>
+        <div>
+          <b>FR · EN</b>
+          <span>Formation bilingue</span>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section class="section" id="services">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-label" data-i18n="servicesLabel">
-            Mes services
-          </div>
+    <section id="ecole" class="section">
+      <div>
+        <div class="eyebrow">À PROPOS DE L’E.M.O.E</div>
 
-          <h2 class="section-title" data-i18n="servicesTitle">
-            Des solutions pensées pour faire la différence
-          </h2>
-
-          <p class="section-description" data-i18n="servicesDescription">
-            Chaque projet est conçu avec une attention particulière portée au
-            design, à la performance et à l’expérience utilisateur.
-          </p>
-        </div>
-
-        <div class="cards-grid">
-          <article class="card reveal">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                <rect x="3" y="4" width="18" height="14" rx="2" />
-                <path d="M8 21H16M12 18V21M7 8H17M7 12H12" />
-              </svg>
-            </div>
-
-            <h3 data-i18n="serviceOneTitle">
-              Création de sites web
-            </h3>
-
-            <p data-i18n="serviceOneDescription">
-              Des sites modernes, responsifs et adaptés à tous les écrans.
-            </p>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                <rect x="4" y="3" width="16" height="18" rx="2" />
-                <path d="M8 7H16M8 11H16M8 15H13" />
-              </svg>
-            </div>
-
-            <h3 data-i18n="serviceTwoTitle">
-              Design UI/UX
-            </h3>
-
-            <p data-i18n="serviceTwoDescription">
-              Des interfaces claires, élégantes et faciles à utiliser.
-            </p>
-          </article>
-
-          <article class="card reveal">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                <path d="M12 3L20 7.5V16.5L12 21L4 16.5V7.5L12 3Z" />
-                <path d="M8 10L12 12L16 10M12 12V17" />
-              </svg>
-            </div>
-
-            <h3 data-i18n="serviceThreeTitle">
-              Solutions digitales
-            </h3>
-
-            <p data-i18n="serviceThreeDescription">
-              Des outils numériques personnalisés pour répondre à vos besoins.
-            </p>
-          </article>
-        </div>
+        <h2>
+          Une formation solide.
+          <br>
+          <em>Une vocation durable.</em>
+        </h2>
       </div>
-    </section>
 
-    <!-- About -->
-    <section class="section" id="about">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-visual reveal">
-            <div class="about-panel">
-              <h3>Ideas into reality.</h3>
-              <p>
-                Une approche créative, précise et orientée vers les résultats.
-              </p>
-
-              <div class="about-stat-grid">
-                <div class="about-stat">
-                  <strong>100%</strong>
-                  <span data-i18n="aboutStatOne">Projets réalisés</span>
-                </div>
-
-                <div class="about-stat">
-                  <strong>24/7</strong>
-                  <span data-i18n="aboutStatFour">Disponibilité</span>
-                </div>
-
-                <div class="about-stat">
-                  <strong>UI</strong>
-                  <span data-i18n="aboutStatThree">Créativité</span>
-                </div>
-
-                <div class="about-stat">
-                  <strong>UX</strong>
-                  <span data-i18n="aboutStatTwo">Satisfaction</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="about-content reveal">
-            <div class="section-label" data-i18n="aboutLabel">
-              À propos
-            </div>
-
-            <h3 data-i18n="aboutTitle">
-              Transformer une idée en expérience digitale.
-            </h3>
-
-            <p data-i18n="aboutTextOne">
-              Je combine créativité, technologie et stratégie pour créer des
-              produits digitaux utiles et mémorables.
-            </p>
-
-            <p data-i18n="aboutTextTwo">
-              Mon objectif est de proposer des solutions simples, efficaces et
-              visuellement fortes.
-            </p>
-
-            <ul class="check-list">
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12L10 17L19 7" />
-                </svg>
-                <span>Design moderne et responsive</span>
-              </li>
-
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12L10 17L19 7" />
-                </svg>
-                <span>Code propre et performances optimisées</span>
-              </li>
-
-              <li>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12L10 17L19 7" />
-                </svg>
-                <span>Expérience utilisateur au centre du projet</span>
-              </li>
-            </ul>
-
-            <a class="btn btn-primary" href="#contact">
-              <span data-i18n="heroSecondary">Me contacter</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12H19M12 5L19 12L12 19" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-label" data-i18n="projectsLabel">
-            Portfolio
-          </div>
-
-          <h2 class="section-title" data-i18n="projectsTitle">
-            Quelques projets sélectionnés
-          </h2>
-
-          <p class="section-description" data-i18n="projectsDescription">
-            Une sélection de concepts et de réalisations conçus avec passion.
-          </p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card reveal">
-            <div class="project-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <rect x="3" y="4" width="18" height="16" rx="2" />
-                <path d="M3 9H21M8 4V9M12 4V9M16 4V9M7 13H17M7 16H13" />
-              </svg>
-            </div>
-
-            <div class="project-content">
-              <h3 data-i18n="projectOneTitle">
-                Plateforme digitale
-              </h3>
-
-              <p data-i18n="projectOneDescription">
-                Une plateforme moderne avec une interface intuitive.
-              </p>
-
-              <div class="project-tags">
-                <span class="project-tag">HTML</span>
-                <span class="project-tag">CSS</span>
-                <span class="project-tag">JavaScript</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <rect x="6" y="2" width="12" height="20" rx="3" />
-                <path d="M9 5H15M10 18H14" />
-                <path d="M9 9H15M9 12H15M9 15H12" />
-              </svg>
-            </div>
-
-            <div class="project-content">
-              <h3 data-i18n="projectTwoTitle">
-                Application mobile
-              </h3>
-
-              <p data-i18n="projectTwoDescription">
-                Une expérience mobile fluide et agréable.
-              </p>
-
-              <div class="project-tags">
-                <span class="project-tag">Mobile</span>
-                <span class="project-tag">UI/UX</span>
-                <span class="project-tag">Prototype</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-image">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
-                <path d="M4 5H20V19H4Z" />
-                <path d="M8 9H16M8 13H13M8 16H16" />
-                <circle cx="17" cy="16" r="2" />
-              </svg>
-            </div>
-
-            <div class="project-content">
-              <h3 data-i18n="projectThreeTitle">
-                Identité de marque
-              </h3>
-
-              <p data-i18n="projectThreeDescription">
-                Une identité visuelle cohérente et reconnaissable.
-              </p>
-
-              <div class="project-tags">
-                <span class="project-tag">Branding</span>
-                <span class="project-tag">Visual</span>
-                <span class="project-tag">Strategy</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-label" data-i18n="contactLabel">
-            Contact
-          </div>
-
-          <h2 class="section-title" data-i18n="contactTitle">
-            Parlons de votre prochain projet
-          </h2>
-
-          <p class="section-description" data-i18n="contactDescription">
-            Vous avez une idée ou un projet en tête ? Envoyez-moi un message et
-            discutons-en.
-          </p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-info reveal">
-            <h3 data-i18n="contactInfoTitle">
-              Restons en contact
-            </h3>
-
-            <p data-i18n="contactInfoDescription">
-              Je suis disponible pour discuter de collaborations, de projets et
-              de nouvelles opportunités.
-            </p>
-
-            <ul class="contact-list">
-              <li>
-                <div class="contact-list-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                    <path d="M4 6H20V18H4Z" />
-                    <path d="M4 7L12 13L20 7" />
-                  </svg>
-                </div>
-
-                <div>
-                  <strong>Email</strong>
-                  <span>contact@example.com</span>
-                </div>
-              </li>
-
-              <li>
-                <div class="contact-list-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                    <path d="M6 3H10L12 8L9 10C10.3 12.8 11.2 13.7 14 15L16 12L21 14V18C21 19.1 20.1 20 19 20C10.7 20 4 13.3 4 5C4 3.9 4.9 3 6 3Z" />
-                  </svg>
-                </div>
-
-                <div>
-                  <strong>Phone</strong>
-                  <span>+243 000 000 000</span>
-                </div>
-              </li>
-
-              <li>
-                <div class="contact-list-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-                    <path d="M12 21C16 17 19 13.5 19 9C19 5.13 15.87 2 12 2C8.13 2 5 5.13 5 9C5 13.5 8 17 12 21Z" />
-                    <circle cx="12" cy="9" r="2.5" />
-                  </svg>
-                </div>
-
-                <div>
-                  <strong>Location</strong>
-                  <span>Kinshasa, RDC</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="contact-form reveal">
-            <h3 data-i18n="formTitle">
-              Envoyer un message
-            </h3>
-
-            <form>
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="name" data-i18n="formName">
-                    Votre nom
-                  </label>
-
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Votre nom"
-                    data-i18n-placeholder="formName"
-                    required
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="email" data-i18n="formEmail">
-                    Votre adresse email
-                  </label>
-
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="Votre adresse email"
-                    data-i18n-placeholder="formEmail"
-                    required
-                  />
-                </div>
-
-                <div class="form-group full">
-                  <label for="subject" data-i18n="formSubject">
-                    Sujet
-                  </label>
-
-                  <input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    placeholder="Sujet"
-                    data-i18n-placeholder="formSubject"
-                  />
-                </div>
-
-                <div class="form-group full">
-                  <label for="message" data-i18n="formMessage">
-                    Votre message
-                  </label>
-
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Votre message"
-                    data-i18n-placeholder="formMessage"
-                    required
-                  ></textarea>
-                </div>
-              </div>
-
-              <button class="btn btn-primary" type="submit">
-                <span data-i18n="formSubmit">
-                  Envoyer le message
-                </span>
-
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 2L11 13" />
-                  <path d="M22 2L15 22L11 13L2 9L22 2Z" />
-                </svg>
-              </button>
-
-              <div class="form-message" role="status" aria-live="polite"></div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
+      <div class="content-copy">
         <p>
-          © <span id="current-year"></span> Eloge Mushimi.
-          <span data-i18n="footerText">Tous droits réservés.</span>
+          L’École de Ministère Ombre de l’Éternel accompagne les serviteurs de
+          Dieu, les responsables d’églises et les étudiants qui souhaitent
+          approfondir leur connaissance biblique, développer leur leadership
+          et servir avec intégrité.
         </p>
 
-        <div class="footer-links">
-          <a href="#home" data-i18n="footerPrivacy">Confidentialité</a>
-          <a href="#contact" data-i18n="footerTerms">Conditions</a>
+        <p>
+          L’E.M.O.E est une institution chrétienne évangélique. Son
+          enseignement repose sur la fidélité aux Saintes Écritures, la
+          formation du caractère et la préparation pratique au service de Dieu
+          et de l’Église.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div>
+        <div class="eyebrow">NOTRE IDENTITÉ</div>
+
+        <h2>
+          Foi, discipline
+          <br>
+          <em>et vie communautaire.</em>
+        </h2>
+      </div>
+
+      <div class="info-panel">
+        <p>
+          Tous les étudiants doivent signer et respecter strictement une
+          Déclaration de foi — <strong>Statement of Faith</strong> — ainsi
+          qu’un Engagement de vie en communauté —
+          <strong>Community Covenant</strong>.
+        </p>
+
+        <p>
+          Ces engagements définissent les valeurs chrétiennes évangéliques,
+          le comportement attendu et le mode de vie quotidien au sein de
+          l’établissement.
+        </p>
+      </div>
+    </section>
+
+    <section id="programmes" class="section programs">
+      <div class="sectionhead">
+        <div>
+          <div class="eyebrow">PARCOURS ACADÉMIQUES</div>
+
+          <h2>
+            Choisissez votre
+            <br>
+            <em>prochain niveau.</em>
+          </h2>
+        </div>
+
+        <div class="controls">
+          <button id="prev" type="button" aria-label="Programme précédent">←</button>
+          <button id="next" type="button" aria-label="Programme suivant">→</button>
         </div>
       </div>
-    </div>
-  </footer>
+
+      <div class="track" id="track">
+        <article>
+          <span>01 / LICENCE</span>
+          <h3>Théologie pratique</h3>
+          <p>
+            Une formation fondamentale pour développer une base biblique,
+            théologique et pratique solide.
+          </p>
+          <a href="#licence">Découvrir la Licence ↗</a>
+        </article>
+
+        <article>
+          <span>02 / MASTER</span>
+          <h3>Théologie pratique</h3>
+          <p>
+            Un parcours d’approfondissement destiné aux titulaires d’une
+            Licence en théologie pratique.
+          </p>
+          <a href="#master">Découvrir le Master ↗</a>
+        </article>
+
+        <article>
+          <span>03 / DOCTORAT</span>
+          <h3>Théologie pratique</h3>
+          <p>
+            Un parcours de recherche avancée destiné aux titulaires d’un
+            Master en théologie pratique.
+          </p>
+          <a href="#doctorat">Découvrir le Doctorat ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="licence" class="section">
+      <div>
+        <div class="eyebrow">01 · LICENCE</div>
+
+        <h2>
+          Licence en
+          <br>
+          <em>théologie pratique.</em>
+        </h2>
+      </div>
+
+      <div class="subject-grid">
+        <div>Introduction à la théologie</div>
+        <div>Homilétique</div>
+        <div>Gestion financière d’une église locale</div>
+        <div>Herméneutique</div>
+        <div>Eschatologie</div>
+        <div>Angélologie</div>
+        <div>Démonologie</div>
+        <div>Leadership biblique</div>
+      </div>
+    </section>
+
+    <section id="master" class="section">
+      <div>
+        <div class="eyebrow">02 · MASTER</div>
+
+        <h2>
+          Master en
+          <br>
+          <em>théologie pratique.</em>
+        </h2>
+      </div>
+
+      <div class="info-panel">
+        <p>
+          Pour postuler au Master, il est obligatoire d’avoir obtenu une
+          <strong>Licence en théologie pratique</strong>.
+        </p>
+
+        <p>
+          Le Master permet d’approfondir la recherche, l’analyse biblique,
+          la réflexion théologique et le développement stratégique du ministère.
+        </p>
+      </div>
+    </section>
+
+    <section id="doctorat" class="section">
+      <div>
+        <div class="eyebrow">03 · DOCTORAT</div>
+
+        <h2>
+          Doctorat en
+          <br>
+          <em>théologie pratique.</em>
+        </h2>
+      </div>
+
+      <div class="info-panel">
+        <p>
+          Pour postuler au Doctorat, il est obligatoire d’avoir obtenu un
+          <strong>Master en théologie pratique</strong>.
+        </p>
+
+        <p>
+          Le Doctorat est orienté vers la recherche avancée, la contribution
+          scientifique et l’accompagnement de projets de transformation
+          ecclésiale.
+        </p>
+      </div>
+    </section>
+
+    <section id="admission-info" class="section admission-section">
+      <div>
+        <div class="eyebrow">ADMISSIONS</div>
+
+        <h2>
+          Préparez votre
+          <br>
+          <em>prochaine étape.</em>
+        </h2>
+      </div>
+
+      <div class="admission-grid">
+        <div class="info-panel">
+          <h3>Conditions générales</h3>
+          <p>
+            Chaque étudiant doit accepter l’identité chrétienne évangélique
+            de l’E.M.O.E.
+          </p>
+          <p>
+            La signature du Statement of Faith et du Community Covenant est
+            obligatoire.
+          </p>
+        </div>
+
+        <div class="info-panel">
+          <h3>Documents à fournir</h3>
+          <ul>
+            <li>Lettre d’intention</li>
+            <li>Pièce d’identité</li>
+            <li>Photo d’identité format passeport</li>
+          </ul>
+        </div>
+
+        <div class="info-panel">
+          <h3>Frais</h3>
+          <p>Frais d’inscription : <strong>10 $</strong></p>
+          <p>Frais de formation : <strong>0 $</strong></p>
+        </div>
+
+        <div class="info-panel">
+          <h3>Calendrier</h3>
+          <p>Ouverture des inscriptions : <strong>Décembre</strong></p>
+          <p>Début des cours : <strong>Mars</strong></p>
+        </div>
+      </div>
+
+      <button class="primary" type="button" data-open>
+        Ouvrir le formulaire d’admission ↗
+      </button>
+    </section>
+
+    <section class="section">
+      <div>
+        <div class="eyebrow">PRÉSENCE INTERNATIONALE</div>
+
+        <h2>
+          Une école au service
+          <br>
+          <em>des nations.</em>
+        </h2>
+      </div>
+
+      <div class="country-list">
+        <span>RDC</span>
+        <span>Ouganda</span>
+        <span>Angola</span>
+        <span>Zambie</span>
+        <span>France</span>
+        <span>Canada</span>
+        <span>Angleterre</span>
+        <span>Chypre</span>
+        <span>États-Unis</span>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div>
+        <div class="eyebrow">CONTACT · ADMISSIONS INTERNATIONALES</div>
+
+        <h2>
+          Votre appel mérite
+          <br>
+          <em>une préparation d’excellence.</em>
+        </h2>
+
+        <p><strong>Adresse :</strong> Londres, Angleterre</p>
+
+        <p>
+          <strong>Téléphone :</strong>
+          <a href="tel:+33670985008">+33 6 70 98 50 08</a>
+        </p>
+
+        <p>
+          <strong>WhatsApp :</strong>
+          <a href="https://wa.me/33629606103" target="_blank" rel="noopener">
+            +33 6 29 60 61 03
+          </a>
+        </p>
+
+        <p>
+          <strong>Email :</strong>
+          <a href="mailto:ecoleombredeleternel@gmail.com">
+            ecoleombredeleternel@gmail.com
+          </a>
+        </p>
+      </div>
+
+      <button class="primary" type="button" data-open>
+        Ouvrir le formulaire ↗
+      </button>
+    </section>
+
+    <section class="section">
+      <div>
+        <div class="eyebrow">RÉSEAUX SOCIAUX</div>
+
+        <h2>
+          Restons
+          <br>
+          <em>connectés.</em>
+        </h2>
+      </div>
+
+      <div class="social-list">
+        <p>Facebook : École Ministère Ombre L’Éternel</p>
+        <p>Instagram : École de Ministère Ombre de l’Éternel</p>
+        <p>YouTube : École de Ministère Ombre de l’Éternel</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>© E.M.O.E — Ombre de l’Éternel</span>
+      <span>
+        RDC · Ouganda · Angola · Zambie · France · Canada · Angleterre ·
+        Chypre · États-Unis
+      </span>
+    </footer>
+  </main>
+
+  <dialog id="modal">
+    <form id="admission">
+      <button type="button" class="close" id="close" aria-label="Fermer">×</button>
+
+      <div class="eyebrow">CANDIDATURE E.M.O.E</div>
+
+      <h2>Formulaire d’admission</h2>
+
+      <p class="muted">
+        Remplissez les informations ci-dessous. Votre candidature sera
+        préparée dans votre messagerie électronique.
+      </p>
+
+      <div class="formgrid">
+        <label>
+          Nom
+          <input name="nom" required>
+        </label>
+
+        <label>
+          Prénoms
+          <input name="prenoms" required>
+        </label>
+
+        <label>
+          Post-nom
+          <input name="postNom" required>
+        </label>
+
+        <label>
+          Date de naissance
+          <input type="date" name="dateNaissance" required>
+        </label>
+
+        <label>
+          Téléphone
+          <input name="telephone" type="tel" required>
+        </label>
+
+        <label>
+          Email
+          <input name="email" type="email" required>
+        </label>
+
+        <label>
+          Pays
+          <input name="pays" required>
+        </label>
+
+        <label>
+          Ville
+          <input name="ville" required>
+        </label>
+
+        <label class="wide">
+          Église de provenance
+          <input name="eglise" required>
+        </label>
+
+        <label class="wide">
+          Fonction dans l’église
+          <input name="fonction" required>
+        </label>
+      </div>
+
+      <button class="primary widebtn" type="submit">
+        Préparer ma candidature ↗
+      </button>
+
+      <p id="status" class="status" aria-live="polite"></p>
+    </form>
+  </dialog>
 
   <script>
-    document.getElementById("current-year").textContent =
-      new Date().getFullYear();
-  </script>
+    const modal = document.getElementById("modal");
+    const closeButton = document.getElementById("close");
+    const admissionForm = document.getElementById("admission");
+    const status = document.getElementById("status");
+    const languageButton = document.getElementById("lang");
 
-  <script src="app.js" defer></script>
+    document.querySelectorAll("[data-open]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (typeof modal.showModal === "function") {
+          modal.showModal();
+          document.body.classList.add("modal-open");
+        } else {
+          modal.setAttribute("open", "");
+        }
+      });
+    });
+
+    function closeModal() {
+      if (typeof modal.close === "function") {
+        modal.close();
+      } else {
+        modal.removeAttribute("open");
+      }
+
+      document.body.classList.remove("modal-open");
+    }
+
+    closeButton.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.open) {
+        closeModal();
+      }
+    });
+
+    const translations = {
+      fr: {
+        school: "École de Ministère Ombre de l’Éternel",
+        schoolShort: "L’école",
+        programs: "Programmes",
+        admissions: "Admissions",
+        contact: "Contact",
+        application: "Candidature ↗",
+        heroEyebrow: "FORMATION · FOI · LEADERSHIP",
+        heroTitle: "Former une génération<br><em>pour servir</em> le monde.",
+        heroText: "Une école internationale chrétienne évangélique de théologie pratique, dédiée à l’excellence académique, à la maturité spirituelle et à l’impact du ministère."
+      },
+      en: {
+        school: "Eternal Shadow Ministry School",
+        schoolShort: "The school",
+        programs: "Programs",
+        admissions: "Admissions",
+        contact: "Contact",
+        application: "Apply ↗",
+        heroEyebrow: "TRAINING · FAITH · LEADERSHIP",
+        heroTitle: "Raising a generation<br><em>to serve</em> the world.",
+        heroText: "An international evangelical Christian school of practical theology, dedicated to academic excellence, spiritual maturity and ministry impact."
+      }
+    };
+
+    let currentLanguage = "fr";
+
+    languageButton.addEventListener("click", () => {
+      currentLanguage = currentLanguage === "fr" ? "en" : "fr";
+      languageButton.textContent = currentLanguage === "fr" ? "EN" : "FR";
+      document.documentElement.lang = currentLanguage;
+
+      const t = translations[currentLanguage];
+
+      document.querySelector(".brand small").textContent = t.school;
+      document.querySelectorAll(".navlinks a")[0].textContent = t.schoolShort;
+      document.querySelectorAll(".navlinks a")[1].textContent = t.programs;
+      document.querySelectorAll(".navlinks a")[2].textContent = t.admissions;
+      document.querySelectorAll(".navlinks a")[3].textContent = t.contact;
+      document.querySelectorAll("[data-open]").forEach((button) => {
+        button.textContent = t.application;
+      });
+
+      document.querySelector(".hero .eyebrow").textContent = t.heroEyebrow;
+      document.querySelector(".hero h1").innerHTML = t.heroTitle;
+      document.querySelector(".hero > p").textContent = t.heroText;
+    });
+
+    admissionForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const data = new FormData(admissionForm);
+      const subject = encodeURIComponent("Candidature E.M.O.E");
+      const body = encodeURIComponent(
+        "Nouvelle candidature E.M.O.E\n\n" +
+        "Nom : " + data.get("nom") + "\n" +
+        "Prénoms : " + data.get("prenoms") + "\n" +
+        "Post-nom : " + data.get("postNom") + "\n" +
+        "Date de naissance : " + data.get("dateNaissance") + "\n" +
+        "Téléphone : " + data.get("telephone") + "\n" +
+        "Email : " + data.get("email") + "\n" +
+        "Pays : " + data.get("pays") + "\n" +
+        "Ville : " + data.get("ville") + "\n" +
+        "Église : " + data.get("eglise") + "\n" +
+        "Fonction : " + data.get("fonction")
+      );
+
+      status.textContent = "Ouverture de votre messagerie…";
+
+      window.location.href =
+        "mailto:ecoleombredeleternel@gmail.com?subject=" +
+        subject +
+        "&body=" +
+        body;
+    });
+
+    const track = document.getElementById("track");
+    const previousButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+
+    previousButton.addEventListener("click", () => {
+      track.scrollBy({
+        left: -track.clientWidth,
+        behavior: "smooth"
+      });
+    });
+
+    nextButton.addEventListener("click", () => {
+      track.scrollBy({
+        left: track.clientWidth,
+        behavior: "smooth"
+      });
+    });
+  </script>
 </body>
 </html>
-
