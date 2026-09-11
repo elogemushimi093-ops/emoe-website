@@ -1,963 +1,521 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta
-    name="description"
-    content="École de Ministère Ombre de l'Éternel — E.M.O.E. Formation chrétienne évangélique en théologie pratique."
-  >
-
-  <title>E.M.O.E. — École de Ministère Ombre de l'Éternel</title>
-
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E.M.O.E — École de Ministère Ombre de l’Éternel</title>
+  <meta name="description" content="École internationale chrétienne évangélique de théologie pratique.">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
+  <div class="bg"></div>
 
-  <!-- ================= HEADER ================= -->
-
-  <header class="site-header">
-
-    <a href="#accueil" class="brand">
-      <img src="logo-emoe.jpg" alt="Logo E.M.O.E.">
-      <div>
-        <strong>E.M.O.E.</strong>
-        <span>École de Ministère Ombre de l'Éternel</span>
-      </div>
-    </a>
-
-    <nav class="main-nav">
-      <a href="#accueil" data-fr="Accueil" data-en="Home">Accueil</a>
-      <a href="#ecole" data-fr="L'école" data-en="The School">L'école</a>
-      <a href="#programmes" data-fr="Programmes" data-en="Programs">Programmes</a>
-      <a href="#admission" data-fr="Admission" data-en="Admission">Admission</a>
-      <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
-    </nav>
-
-    <div class="header-actions">
-      <button id="lang" class="lang-button" type="button">EN</button>
-
-      <a href="#admission" class="header-cta">
-        <span data-fr="Candidater" data-en="Apply">Candidater</span>
-        <span>↗</span>
-      </a>
-    </div>
-
-  </header>
-
-
-  <!-- ================= HERO ================= -->
+  <aside class="sidebar">
+    <div class="mark">E<span>.</span></div>
+    <a href="#accueil" aria-label="Accueil">⌂</a>
+    <a href="#ecole" aria-label="À propos">◈</a>
+    <a href="#programmes" aria-label="Programmes">▦</a>
+    <a href="#admission-info" aria-label="Admissions">✓</a>
+    <a href="#contact" aria-label="Contact">✉</a>
+    <button id="lang" type="button">EN</button>
+  </aside>
 
   <main>
+    <nav>
+      <div class="brand">
+        <img src="/logo-emoe.jpg" alt="Logo officiel E.M.O.E">
+        <span>
+          E.M.O.E
+          <small>École de Ministère Ombre de l’Éternel</small>
+        </span>
+      </div>
+
+      <div class="navlinks">
+        <a href="#ecole">L’école</a>
+        <a href="#programmes">Programmes</a>
+        <a href="#admission-info">Admissions</a>
+        <a href="#contact">Contact</a>
+        <button class="outline" type="button" data-open>
+          Candidature ↗
+        </button>
+      </div>
+    </nav>
 
     <section id="accueil" class="hero">
+      <div class="eyebrow">FORMATION · FOI · LEADERSHIP</div>
 
-      <div class="hero-glow"></div>
-      <div class="hero-grid"></div>
+      <h1>
+        Former une génération
+        <br>
+        <em>pour servir</em> le monde.
+      </h1>
 
-      <div class="hero-content">
+      <p>
+        Une école internationale chrétienne évangélique de théologie pratique,
+        dédiée à l’excellence académique, à la maturité spirituelle et à
+        l’impact du ministère.
+      </p>
 
-        <p class="eyebrow"
-           data-fr="ÉCOLE DE MINISTÈRE · THÉOLOGIE PRATIQUE"
-           data-en="MINISTRY SCHOOL · PRACTICAL THEOLOGY">
-          ÉCOLE DE MINISTÈRE · THÉOLOGIE PRATIQUE
-        </p>
+      <div class="actions">
+        <button class="primary" type="button" data-open>
+          Commencer une candidature ↗
+        </button>
 
-        <h1>
-          ÉCOLE DE MINISTÈRE
-          <span>OMBRE DE L'ÉTERNEL</span>
-        </h1>
+        <a class="textlink" href="#programmes">
+          Découvrir les programmes ↓
+        </a>
+      </div>
 
-        <div class="hero-line"></div>
-
-        <p class="hero-text"
-           data-fr="Une formation chrétienne évangélique destinée à préparer des hommes et des femmes à servir Dieu avec excellence, profondeur biblique et responsabilité."
-           data-en="An evangelical Christian school preparing men and women to serve God with excellence, biblical depth and responsibility.">
-          Une formation chrétienne évangélique destinée à préparer des hommes et des femmes à servir Dieu avec excellence, profondeur biblique et responsabilité.
-        </p>
-
-        <div class="hero-actions">
-
-          <a href="#programmes" class="button primary">
-            <span data-fr="Découvrir les programmes" data-en="Discover the programs">
-              Découvrir les programmes
-            </span>
-            <span>→</span>
-          </a>
-
-          <a href="#admission" class="button secondary"
-             data-fr="Demander une admission"
-             data-en="Request admission">
-            Demander une admission
-          </a>
-
+      <div class="stats">
+        <div>
+          <b>09</b>
+          <span>Pays représentés</span>
         </div>
 
+        <div>
+          <b>03</b>
+          <span>Cycles académiques</span>
+        </div>
+
+        <div>
+          <b>FR · EN</b>
+          <span>Formation bilingue</span>
+        </div>
       </div>
-
-      <div class="hero-bottom">
-
-        <span data-fr="LONDRES · ANGLETERRE"
-              data-en="LONDON · ENGLAND">
-          LONDRES · ANGLETERRE
-        </span>
-
-        <div class="scroll-line"></div>
-
-        <span data-fr="FORMATION · FOI · SERVICE"
-              data-en="TRAINING · FAITH · SERVICE">
-          FORMATION · FOI · SERVICE
-        </span>
-
-      </div>
-
     </section>
-
-
-    <!-- ================= ECOLE ================= -->
 
     <section id="ecole" class="section">
+      <div>
+        <div class="eyebrow">À PROPOS DE L’E.M.O.E</div>
 
-      <div class="section-label">
-        <span>01</span>
-        <span data-fr="L'ÉCOLE" data-en="THE SCHOOL">L'ÉCOLE</span>
+        <h2>
+          Une formation solide.
+          <br>
+          <em>Une vocation durable.</em>
+        </h2>
       </div>
 
-      <div class="two-column">
+      <div class="content-copy">
+        <p>
+          L’École de Ministère Ombre de l’Éternel accompagne les serviteurs de
+          Dieu, les responsables d’églises et les étudiants qui souhaitent
+          approfondir leur connaissance biblique, développer leur leadership
+          et servir avec intégrité.
+        </p>
 
-        <div>
-          <p class="eyebrow"
-             data-fr="UNE FORMATION POUR SERVIR"
-             data-en="TRAINING TO SERVE">
-            UNE FORMATION POUR SERVIR
-          </p>
-
-          <h2>
-            Grandir dans la foi.
-            <em data-fr="Servir avec excellence."
-                data-en="Serve with excellence.">
-              Servir avec excellence.
-            </em>
-          </h2>
-        </div>
-
-        <div class="content-copy">
-
-          <p class="lead"
-             data-fr="L'École de Ministère Ombre de l'Éternel, E.M.O.E., propose une formation centrée sur la théologie pratique et le développement du ministère chrétien."
-             data-en="École de Ministère Ombre de l'Éternel, E.M.O.E., provides training focused on practical theology and Christian ministry development.">
-            L'École de Ministère Ombre de l'Éternel, E.M.O.E., propose une formation centrée sur la théologie pratique et le développement du ministère chrétien.
-          </p>
-
-          <p
-            data-fr="Notre objectif est d'équiper les étudiants avec des connaissances bibliques, théologiques et pratiques afin qu'ils puissent servir efficacement dans l'Église et dans leur communauté."
-            data-en="Our goal is to equip students with biblical, theological and practical knowledge so they can serve effectively in the Church and in their communities.">
-            Notre objectif est d'équiper les étudiants avec des connaissances bibliques, théologiques et pratiques afin qu'ils puissent servir efficacement dans l'Église et dans leur communauté.
-          </p>
-
-        </div>
-
+        <p>
+          L’E.M.O.E est une institution chrétienne évangélique. Son
+          enseignement repose sur la fidélité aux Saintes Écritures, la
+          formation du caractère et la préparation pratique au service de Dieu
+          et de l’Église.
+        </p>
       </div>
-
-
-      <div class="feature-grid">
-
-        <article class="feature-card">
-          <span>01</span>
-          <h3 data-fr="FOI" data-en="FAITH">FOI</h3>
-          <p
-            data-fr="Une identité chrétienne évangélique clairement assumée."
-            data-en="A clearly defined evangelical Christian identity.">
-            Une identité chrétienne évangélique clairement assumée.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <span>02</span>
-          <h3 data-fr="FORMATION" data-en="TRAINING">FORMATION</h3>
-          <p
-            data-fr="Une formation structurée en théologie pratique."
-            data-en="Structured training in practical theology.">
-            Une formation structurée en théologie pratique.
-          </p>
-        </article>
-
-        <article class="feature-card">
-          <span>03</span>
-          <h3 data-fr="SERVICE" data-en="SERVICE">SERVICE</h3>
-          <p
-            data-fr="Préparer les étudiants à servir avec responsabilité."
-            data-en="Preparing students to serve with responsibility.">
-            Préparer les étudiants à servir avec responsabilité.
-          </p>
-        </article>
-
-      </div>
-
     </section>
 
+    <section class="section split-section">
+      <div>
+        <div class="eyebrow">NOTRE IDENTITÉ</div>
 
-    <!-- ================= IDENTITE ================= -->
-
-    <section class="dark-section">
-
-      <div class="section-label">
-        <span>02</span>
-        <span data-fr="IDENTITÉ" data-en="IDENTITY">IDENTITÉ</span>
+        <h2>
+          Foi, discipline
+          <br>
+          <em>et vie communautaire.</em>
+        </h2>
       </div>
 
-      <div class="identity-layout">
+      <div class="info-panel">
+        <p>
+          Tous les étudiants doivent signer et respecter strictement une
+          Déclaration de foi — <strong>Statement of Faith</strong> — ainsi
+          qu’un Engagement de vie en communauté —
+          <strong>Community Covenant</strong>.
+        </p>
 
-        <div>
-          <p class="eyebrow"
-             data-fr="ENGAGEMENT CHRÉTIEN"
-             data-en="CHRISTIAN COMMITMENT">
-            ENGAGEMENT CHRÉTIEN
-          </p>
-
-          <h2>
-            Une formation avec
-            <em data-fr="des valeurs solides."
-                data-en="strong values.">
-              des valeurs solides.
-            </em>
-          </h2>
-        </div>
-
-        <div class="identity-card">
-
-          <h3
-            data-fr="Déclaration de foi & engagement communautaire"
-            data-en="Statement of Faith & Community Covenant">
-            Déclaration de foi & engagement communautaire
-          </h3>
-
-          <p
-            data-fr="Tous les étudiants doivent signer et respecter la Déclaration de foi ainsi que l'Engagement communautaire de l'école."
-            data-en="All students must sign and respect the school's Statement of Faith and Community Covenant.">
-            Tous les étudiants doivent signer et respecter la Déclaration de foi ainsi que l'Engagement communautaire de l'école.
-          </p>
-
-          <p
-            data-fr="L'admission implique également l'acceptation de l'identité chrétienne évangélique et des valeurs communautaires de l'E.M.O.E."
-            data-en="Admission also requires acceptance of E.M.O.E.'s evangelical Christian identity and community values.">
-            L'admission implique également l'acceptation de l'identité chrétienne évangélique et des valeurs communautaires de l'E.M.O.E.
-          </p>
-
-        </div>
-
+        <p>
+          Ces engagements définissent les valeurs chrétiennes évangéliques,
+          le comportement attendu et le mode de vie quotidien au sein de
+          l’établissement.
+        </p>
       </div>
-
     </section>
 
-
-    <!-- ================= PROGRAMMES ================= -->
-
-    <section id="programmes" class="section">
-
-      <div class="section-label">
-        <span>03</span>
-        <span data-fr="PROGRAMMES" data-en="PROGRAMS">PROGRAMMES</span>
-      </div>
-
-      <div class="section-heading">
-
+    <section id="programmes" class="section programs">
+      <div class="sectionhead">
         <div>
-          <p class="eyebrow"
-             data-fr="CHOISISSEZ VOTRE PROCHAIN NIVEAU"
-             data-en="CHOOSE YOUR NEXT LEVEL">
-            CHOISISSEZ VOTRE PROCHAIN NIVEAU
-          </p>
+          <div class="eyebrow">PARCOURS ACADÉMIQUES</div>
 
           <h2>
-            Votre parcours
-            <em data-fr="commence ici."
-                data-en="starts here.">
-              commence ici.
-            </em>
+            Choisissez votre
+            <br>
+            <em>prochain niveau.</em>
           </h2>
         </div>
 
-        <div class="carousel-controls">
-
-          <button id="prev" type="button" aria-label="Previous">
+        <div class="controls">
+          <button id="prev" type="button" aria-label="Programme précédent">
             ←
           </button>
 
-          <button id="next" type="button" aria-label="Next">
+          <button id="next" type="button" aria-label="Programme suivant">
             →
           </button>
-
         </div>
-
       </div>
 
+      <div class="track" id="track">
+        <article>
+          <span>01 / LICENCE</span>
+          <h3>Théologie pratique</h3>
 
-      <div class="program-carousel">
-
-        <div id="track" class="program-track">
-
-          <!-- LICENCE -->
-
-          <article class="program-card" data-open="licence">
-
-            <div class="program-number">01</div>
-
-            <p class="program-level"
-               data-fr="PREMIER NIVEAU"
-               data-en="FIRST LEVEL">
-              PREMIER NIVEAU
-            </p>
-
-            <h3 data-fr="Licence"
-                data-en="Bachelor's Degree">
-              Licence
-            </h3>
-
-            <p
-              data-fr="Une première formation approfondie en théologie pratique et ministère chrétien."
-              data-en="A foundational program in practical theology and Christian ministry.">
-              Une première formation approfondie en théologie pratique et ministère chrétien.
-            </p>
-
-            <span class="program-link">
-              <span data-fr="Voir le programme" data-en="View program">
-                Voir le programme
-              </span>
-              →
-            </span>
-
-          </article>
-
-
-          <!-- MASTER -->
-
-          <article class="program-card" data-open="master">
-
-            <div class="program-number">02</div>
-
-            <p class="program-level"
-               data-fr="DEUXIÈME NIVEAU"
-               data-en="SECOND LEVEL">
-              DEUXIÈME NIVEAU
-            </p>
-
-            <h3 data-fr="Master"
-                data-en="Master's Degree">
-              Master
-            </h3>
-
-            <p
-              data-fr="Une formation avancée destinée aux titulaires d'une Licence en théologie pratique."
-              data-en="An advanced program for students holding a Bachelor's degree in practical theology.">
-              Une formation avancée destinée aux titulaires d'une Licence en théologie pratique.
-            </p>
-
-            <span class="program-link">
-              <span data-fr="Voir le programme" data-en="View program">
-                Voir le programme
-              </span>
-              →
-            </span>
-
-          </article>
-
-
-          <!-- DOCTORAT -->
-
-          <article class="program-card" data-open="doctorat">
-
-            <div class="program-number">03</div>
-
-            <p class="program-level"
-               data-fr="TROISIÈME NIVEAU"
-               data-en="THIRD LEVEL">
-              TROISIÈME NIVEAU
-            </p>
-
-            <h3 data-fr="Doctorat"
-                data-en="Doctorate">
-              Doctorat
-            </h3>
-
-            <p
-              data-fr="Un niveau de recherche avancé destiné aux titulaires d'un Master en théologie pratique."
-              data-en="An advanced research level for students holding a Master's degree in practical theology.">
-              Un niveau de recherche avancé destiné aux titulaires d'un Master en théologie pratique.
-            </p>
-
-            <span class="program-link">
-              <span data-fr="Voir le programme" data-en="View program">
-                Voir le programme
-              </span>
-              →
-            </span>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= LICENCE DETAILS ================= -->
-
-    <section class="section program-details">
-
-      <div class="detail-card">
-
-        <p class="eyebrow"
-           data-fr="PROGRAMME DE LICENCE"
-           data-en="BACHELOR'S PROGRAM">
-          PROGRAMME DE LICENCE
-        </p>
-
-        <h2 data-fr="Licence en théologie pratique"
-            data-en="Bachelor's Degree in Practical Theology">
-          Licence en théologie pratique
-        </h2>
-
-        <div class="subject-grid">
-
-          <div data-fr="Introduction à la théologie"
-               data-en="Introduction to Theology">
-            Introduction à la théologie
-          </div>
-
-          <div data-fr="Homilétique"
-               data-en="Homiletics">
-            Homilétique
-          </div>
-
-          <div data-fr="Gestion financière d'une église locale"
-               data-en="Financial Management of a Local Church">
-            Gestion financière d'une église locale
-          </div>
-
-          <div data-fr="Herméneutique"
-               data-en="Hermeneutics">
-            Herméneutique
-          </div>
-
-          <div data-fr="Eschatologie"
-               data-en="Eschatology">
-            Eschatologie
-          </div>
-
-          <div data-fr="Angélologie"
-               data-en="Angelology">
-            Angélologie
-          </div>
-
-          <div data-fr="Démonologie"
-               data-en="Demonology">
-            Démonologie
-          </div>
-
-          <div data-fr="Leadership biblique"
-               data-en="Biblical Leadership">
-            Leadership biblique
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ================= CONDITIONS ================= -->
-
-    <section id="admission" class="dark-section">
-
-      <div class="section-label">
-        <span>04</span>
-        <span data-fr="ADMISSION" data-en="ADMISSION">ADMISSION</span>
-      </div>
-
-      <div class="two-column">
-
-        <div>
-
-          <p class="eyebrow"
-             data-fr="CONDITIONS D'ADMISSION"
-             data-en="ADMISSION REQUIREMENTS">
-            CONDITIONS D'ADMISSION
+          <p>
+            Une formation fondamentale pour développer une base biblique,
+            théologique et pratique solide.
           </p>
 
-          <h2>
-            Préparez votre
-            <em data-fr="candidature."
-                data-en="application.">
-              candidature.
-            </em>
-          </h2>
+          <a href="#licence" data-program="licence">
+            Découvrir la Licence ↗
+          </a>
+        </article>
 
-        </div>
+        <article>
+          <span>02 / MASTER</span>
+          <h3>Théologie pratique</h3>
 
-        <div class="requirements">
+          <p>
+            Un parcours d’approfondissement destiné aux titulaires d’une
+            Licence en théologie pratique.
+          </p>
 
-          <div class="requirement">
+          <a href="#master" data-program="master">
+            Découvrir le Master ↗
+          </a>
+        </article>
 
-            <span>01</span>
+        <article>
+          <span>03 / DOCTORAT</span>
+          <h3>Théologie pratique</h3>
 
-            <div>
-              <h3 data-fr="Licence"
-                  data-en="Bachelor's Degree">
-                Licence
-              </h3>
+          <p>
+            Un parcours de recherche avancée destiné aux titulaires d’un
+            Master en théologie pratique.
+          </p>
 
-              <p
-                data-fr="Signer la Déclaration de foi et l'Engagement communautaire de l'E.M.O.E."
-                data-en="Sign the E.M.O.E. Statement of Faith and Community Covenant.">
-                Signer la Déclaration de foi et l'Engagement communautaire de l'E.M.O.E.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div class="requirement">
-
-            <span>02</span>
-
-            <div>
-              <h3 data-fr="Master"
-                  data-en="Master's Degree">
-                Master
-              </h3>
-
-              <p
-                data-fr="Être titulaire d'une Licence en théologie pratique."
-                data-en="Hold a Bachelor's degree in practical theology.">
-                Être titulaire d'une Licence en théologie pratique.
-              </p>
-            </div>
-
-          </div>
-
-
-          <div class="requirement">
-
-            <span>03</span>
-
-            <div>
-              <h3 data-fr="Doctorat"
-                  data-en="Doctorate">
-                Doctorat
-              </h3>
-
-              <p
-                data-fr="Être titulaire d'un Master en théologie pratique."
-                data-en="Hold a Master's degree in practical theology.">
-                Être titulaire d'un Master en théologie pratique.
-              </p>
-            </div>
-
-          </div>
-
-        </div>
-
+          <a href="#doctorat" data-program="doctorat">
+            Découvrir le Doctorat ↗
+          </a>
+        </article>
       </div>
-
-
-      <div class="documents">
-
-        <h3 data-fr="Documents à fournir"
-            data-en="Required Documents">
-          Documents à fournir
-        </h3>
-
-        <div class="document-grid">
-
-          <div>
-            <strong>01</strong>
-            <span data-fr="Lettre de motivation"
-                  data-en="Letter of Intent">
-              Lettre de motivation
-            </span>
-          </div>
-
-          <div>
-            <strong>02</strong>
-            <span data-fr="Pièce d'identité"
-                  data-en="Identification Document">
-              Pièce d'identité
-            </span>
-          </div>
-
-          <div>
-            <strong>03</strong>
-            <span data-fr="Photo d'identité"
-                  data-en="Passport Photo">
-              Photo d'identité
-            </span>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="admission-price">
-
-        <div>
-          <span data-fr="FRAIS D'INSCRIPTION"
-                data-en="REGISTRATION FEE">
-            FRAIS D'INSCRIPTION
-          </span>
-          <strong>$10</strong>
-        </div>
-
-        <div>
-          <span data-fr="FRAIS DE SCOLARITÉ"
-                data-en="TUITION FEE">
-            FRAIS DE SCOLARITÉ
-          </span>
-          <strong>$0</strong>
-        </div>
-
-        <div>
-          <span data-fr="INSCRIPTIONS"
-                data-en="ENROLLMENT">
-            INSCRIPTIONS
-          </span>
-          <strong data-fr="Décembre"
-                  data-en="December">
-            Décembre
-          </strong>
-        </div>
-
-        <div>
-          <span data-fr="DÉBUT DES COURS"
-                data-en="CLASSES BEGIN">
-            DÉBUT DES COURS
-          </span>
-          <strong data-fr="Mars"
-                  data-en="March">
-            Mars
-          </strong>
-        </div>
-
-      </div>
-
     </section>
 
-
-    <!-- ================= COUNTRIES ================= -->
-
-    <section class="section">
-
-      <div class="section-label">
-        <span>05</span>
-        <span data-fr="PAYS CONCERNÉS"
-              data-en="COUNTRIES">
-          PAYS CONCERNÉS
-        </span>
-      </div>
-
-      <div class="country-intro">
+    <section id="licence" class="section detail-section">
+      <div>
+        <div class="eyebrow">01 · LICENCE</div>
 
         <h2>
-          Une école ouverte
-          <em data-fr="à plusieurs nations."
-              data-en="to many nations.">
-            à plusieurs nations.
-          </em>
+          Licence en
+          <br>
+          <em>théologie pratique.</em>
         </h2>
-
       </div>
 
-
-      <div class="country-grid">
-
-        <div>🇨🇩 <span>RDC</span></div>
-        <div>🇺🇬 <span>Uganda</span></div>
-        <div>🇦🇴 <span>Angola</span></div>
-        <div>🇿🇲 <span>Zambia</span></div>
-        <div>🇫🇷 <span>France</span></div>
-        <div>🇨🇦 <span>Canada</span></div>
-        <div>🇬🇧 <span>England</span></div>
-        <div>🇨🇾 <span>Cyprus</span></div>
-        <div>🇺🇸 <span>USA</span></div>
-
+      <div class="subject-grid">
+        <div>Introduction à la théologie</div>
+        <div>Homilétique</div>
+        <div>Gestion financière d’une église locale</div>
+        <div>Herméneutique</div>
+        <div>Eschatologie</div>
+        <div>Angélologie</div>
+        <div>Démonologie</div>
+        <div>Leadership biblique</div>
       </div>
-
     </section>
 
+    <section id="master" class="section detail-section">
+      <div>
+        <div class="eyebrow">02 · MASTER</div>
 
-    <!-- ================= CONTACT ================= -->
-
-    <section id="contact" class="contact-section">
-
-      <div class="section-label">
-        <span>06</span>
-        <span data-fr="CONTACT" data-en="CONTACT">CONTACT</span>
+        <h2>
+          Master en
+          <br>
+          <em>théologie pratique.</em>
+        </h2>
       </div>
 
-      <div class="contact-layout">
+      <div class="info-panel">
+        <p>
+          Pour postuler au Master, il est obligatoire d’avoir obtenu une
+          <strong>Licence en théologie pratique</strong>.
+        </p>
 
-        <div>
+        <p>
+          Le Master permet d’approfondir la recherche, l’analyse biblique,
+          la réflexion théologique et le développement stratégique du ministère.
+        </p>
+      </div>
+    </section>
 
-          <p class="eyebrow"
-             data-fr="NOUS SOMMES À VOTRE ÉCOUTE"
-             data-en="WE ARE HERE TO HELP">
-            NOUS SOMMES À VOTRE ÉCOUTE
+    <section id="doctorat" class="section detail-section">
+      <div>
+        <div class="eyebrow">03 · DOCTORAT</div>
+
+        <h2>
+          Doctorat en
+          <br>
+          <em>théologie pratique.</em>
+        </h2>
+      </div>
+
+      <div class="info-panel">
+        <p>
+          Pour postuler au Doctorat, il est obligatoire d’avoir obtenu un
+          <strong>Master en théologie pratique</strong>.
+        </p>
+
+        <p>
+          Le Doctorat est orienté vers la recherche avancée, la contribution
+          scientifique et l’accompagnement de projets de transformation
+          ecclésiale.
+        </p>
+      </div>
+    </section>
+
+    <section id="admission-info" class="section admission-section">
+      <div>
+        <div class="eyebrow">ADMISSIONS</div>
+
+        <h2>
+          Préparez votre
+          <br>
+          <em>prochaine étape.</em>
+        </h2>
+      </div>
+
+      <div class="admission-grid">
+        <div class="info-panel">
+          <h3>Conditions générales</h3>
+
+          <p>
+            Chaque étudiant doit accepter l’identité chrétienne évangélique
+            de l’E.M.O.E.
           </p>
 
-          <h2>
-            Une question ?
-            <em data-fr="Contactez-nous."
-                data-en="Contact us.">
-              Contactez-nous.
-            </em>
-          </h2>
-
-          <p
-            data-fr="Pour toute question concernant les programmes, l'admission ou la formation, contactez l'E.M.O.E."
-            data-en="For questions about programs, admission or training, contact E.M.O.E.">
-            Pour toute question concernant les programmes, l'admission ou la formation, contactez l'E.M.O.E.
+          <p>
+            La signature du Statement of Faith et du Community Covenant est
+            obligatoire.
           </p>
-
         </div>
 
+        <div class="info-panel">
+          <h3>Documents à fournir</h3>
 
-        <div class="contact-card">
+          <ul>
+            <li>Lettre d’intention</li>
+            <li>Pièce d’identité</li>
+            <li>Photo d’identité format passeport</li>
+          </ul>
+        </div>
 
-          <span>EMAIL</span>
-          <a href="mailto:ecoleombredeleternel@gmail.com">
-            ecoleombredeleternel@gmail.com
-          </a>
+        <div class="info-panel">
+          <h3>Frais</h3>
 
-          <div class="contact-divider"></div>
+          <p>
+            Frais d’inscription :
+            <strong>10 $</strong>
+          </p>
 
-          <span>PHONE</span>
-          <a href="tel:+33670985008">
-            +33 6 70 98 50 08
-          </a>
+          <p>
+            Frais de formation :
+            <strong>0 $</strong>
+          </p>
+        </div>
 
-          <div class="contact-divider"></div>
+        <div class="info-panel">
+          <h3>Calendrier</h3>
 
-          <span>WHATSAPP ADMISSIONS</span>
+          <p>
+            Ouverture des inscriptions :
+            <strong>Décembre</strong>
+          </p>
+
+          <p>
+            Début des cours :
+            <strong>Mars</strong>
+          </p>
+        </div>
+      </div>
+
+      <button class="primary" type="button" data-open>
+        Ouvrir le formulaire d’admission ↗
+      </button>
+    </section>
+
+    <section class="section countries-section">
+      <div>
+        <div class="eyebrow">PRÉSENCE INTERNATIONALE</div>
+
+        <h2>
+          Une école au service
+          <br>
+          <em>des nations.</em>
+        </h2>
+      </div>
+
+      <div class="country-list">
+        <span>RDC</span>
+        <span>Ouganda</span>
+        <span>Angola</span>
+        <span>Zambie</span>
+        <span>France</span>
+        <span>Canada</span>
+        <span>Angleterre</span>
+        <span>Chypre</span>
+        <span>États-Unis</span>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div>
+        <div class="eyebrow">CONTACT · ADMISSIONS INTERNATIONALES</div>
+
+        <h2>
+          Votre appel mérite
+          <br>
+          <em>une préparation d’excellence.</em>
+        </h2>
+
+        <p>
+          <strong>Adresse :</strong> Londres, Angleterre
+        </p>
+
+        <p>
+          <strong>Téléphone :</strong>
+          <a href="tel:+33670985008">+33 6 70 98 50 08</a>
+        </p>
+
+        <p>
+          <strong>WhatsApp :</strong>
           <a href="https://wa.me/33629606103" target="_blank" rel="noopener">
             +33 6 29 60 61 03
           </a>
+        </p>
 
-          <div class="contact-divider"></div>
-
-          <span>LOCATION</span>
-          <p>Londres, Angleterre</p>
-
-        </div>
-
+        <p>
+          <strong>Email :</strong>
+          <a href="mailto:ecoleombredeleternel@gmail.com">
+            ecoleombredeleternel@gmail.com
+          </a>
+        </p>
       </div>
 
-
-      <!-- SOCIAUX : LOGOS UNIQUEMENT -->
-
-      <div class="social-links">
-
-        <a href="#" aria-label="Facebook" class="social-icon facebook">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v8h4v-8h3.3l.7-4H13V9c0-.7.3-1 1-1z"/>
-          </svg>
-
-        </a>
-
-
-        <a href="#" aria-label="Instagram" class="social-icon instagram">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="5" ry="5"></rect>
-            <circle cx="12" cy="12" r="4"></circle>
-            <circle cx="17.5" cy="6.5" r="1"></circle>
-          </svg>
-
-        </a>
-
-
-        <a href="#" aria-label="YouTube" class="social-icon youtube">
-
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8z"></path>
-            <polygon points="9.5,8 16,12 9.5,16"></polygon>
-          </svg>
-
-        </a>
-
-      </div>
-
+      <button class="primary" type="button" data-open>
+        Ouvrir le formulaire ↗
+      </button>
     </section>
 
+    <section class="section social-section">
+      <div>
+        <div class="eyebrow">RÉSEAUX SOCIAUX</div>
+
+        <h2>
+          Restons
+          <br>
+          <em>connectés.</em>
+        </h2>
+      </div>
+
+      <div class="social-list">
+        <p>Facebook : École Ministère Ombre L’Éternel</p>
+        <p>Instagram : École de Ministère Ombre de l’Éternel</p>
+        <p>YouTube : École de Ministère Ombre de l’Éternel</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>© E.M.O.E — Ombre de l’Éternel</span>
+
+      <span>
+        RDC · Ouganda · Angola · Zambie · France · Canada · Angleterre ·
+        Chypre · États-Unis
+      </span>
+    </footer>
   </main>
 
-
-  <!-- ================= MODAL ADMISSION ================= -->
-
-  <div id="modal" class="modal" aria-hidden="true">
-
-    <div class="modal-backdrop" data-close></div>
-
-    <div class="modal-content">
-
-      <button id="closeModal" class="modal-close" type="button">
+  <dialog id="modal">
+    <form id="admission">
+      <button type="button" class="close" id="close" aria-label="Fermer">
         ×
       </button>
 
-      <p class="eyebrow"
-         data-fr="DEMANDE D'ADMISSION"
-         data-en="ADMISSION REQUEST">
-        DEMANDE D'ADMISSION
+      <div class="eyebrow">CANDIDATURE E.M.O.E</div>
+
+      <h2>Formulaire d’admission</h2>
+
+      <p class="muted">
+        Remplissez les informations ci-dessous. Votre candidature sera
+        transmise à l’administration de l’E.M.O.E.
       </p>
 
-      <h2 data-fr="Commencer votre candidature"
-          data-en="Start your application">
-        Commencer votre candidature
-      </h2>
+      <div class="formgrid">
+        <label>
+          Nom
+          <input name="nom" required>
+        </label>
 
-      <p class="modal-intro"
-         data-fr="Remplissez le formulaire ci-dessous. Notre équipe vous contactera pour la suite."
-         data-en="Complete the form below. Our team will contact you regarding the next steps.">
-        Remplissez le formulaire ci-dessous. Notre équipe vous contactera pour la suite.
-      </p>
+        <label>
+          Prénoms
+          <input name="prenoms" required>
+        </label>
 
+        <label>
+          Post-nom
+          <input name="postNom" required>
+        </label>
 
-      <form id="admissionForm">
+        <label>
+          Date de naissance
+          <input type="date" name="dateNaissance" required>
+        </label>
 
-        <div class="form-grid">
+        <label>
+          Téléphone
+          <input name="telephone" type="tel" required>
+        </label>
 
-          <label>
-            <span data-fr="Nom" data-en="Last Name">Nom</span>
-            <input type="text" name="nom" required>
-          </label>
+        <label>
+          Email
+          <input name="email" type="email" required>
+        </label>
 
-          <label>
-            <span data-fr="Prénoms" data-en="First Name(s)">Prénoms</span>
-            <input type="text" name="prenoms" required>
-          </label>
+        <label>
+          Pays
+          <input name="pays" required>
+        </label>
 
-          <label>
-            <span data-fr="Post-nom" data-en="Middle Name">Post-nom</span>
-            <input type="text" name="postNom">
-          </label>
+        <label>
+          Ville
+          <input name="ville" required>
+        </label>
 
-          <label>
-            <span data-fr="Date de naissance" data-en="Date of Birth">
-              Date de naissance
-            </span>
-            <input type="date" name="dateNaissance" required>
-          </label>
+        <label class="wide">
+          Église de provenance
+          <input name="eglise" required>
+        </label>
 
-          <label>
-            <span data-fr="Téléphone" data-en="Phone">
-              Téléphone
-            </span>
-            <input type="tel" name="telephone" required>
-          </label>
-
-          <label>
-            <span data-fr="Email" data-en="Email">
-              Email
-            </span>
-            <input type="email" name="email" required>
-          </label>
-
-          <label>
-            <span data-fr="Pays" data-en="Country">
-              Pays
-            </span>
-            <input type="text" name="pays" required>
-          </label>
-
-          <label>
-            <span data-fr="Ville" data-en="City">
-              Ville
-            </span>
-            <input type="text" name="ville" required>
-          </label>
-
-          <label>
-            <span data-fr="Église" data-en="Church">
-              Église
-            </span>
-            <input type="text" name="eglise">
-          </label>
-
-          <!-- CORRECTION IMPORTANTE -->
-
-          <label>
-            <span data-fr="Fonction / ministère"
-                  data-en="Position / Ministry">
-              Fonction / ministère
-            </span>
-
-            <input
-              type="text"
-              name="fonction"
-              data-placeholder-fr="Ex. Pasteur, Évangéliste, Responsable..."
-              data-placeholder-en="E.g. Pastor, Evangelist, Ministry Leader..."
-              placeholder="Ex. Pasteur, Évangéliste, Responsable..."
-            >
-          </label>
-
-        </div>
-
-
-        <div class="form-actions">
-
-          <button id="submitAdmission"
-                  class="button primary"
-                  type="submit">
-
-            <span data-fr="Envoyer la demande"
-                  data-en="Submit application">
-              Envoyer la demande
-            </span>
-
-            <span>→</span>
-
-          </button>
-
-          <p id="status" class="form-status"></p>
-
-        </div>
-
-      </form>
-
-    </div>
-
-  </div>
-
-
-  <!-- ================= FOOTER ================= -->
-
-  <footer>
-
-    <div class="footer-brand">
-
-      <img src="logo-emoe.jpg" alt="E.M.O.E.">
-
-      <div>
-        <strong>E.M.O.E.</strong>
-        <span>École de Ministère Ombre de l'Éternel</span>
+        <label class="wide">
+          Fonction dans l’église
+          <input name="fonction" required>
+        </label>
       </div>
 
-    </div>
+      <button class="primary widebtn" type="submit">
+        Envoyer ma candidature ↗
+      </button>
 
-    <p>
-      © <span id="year"></span>
-      E.M.O.E.
-    </p>
+      <p id="status" class="status" aria-live="polite"></p>
+    </form>
+  </dialog>
 
-  </footer>
-
-
-  <script src="app.js"></script>
-
+  <script src="/app.js"></script>
 </body>
 </html>
