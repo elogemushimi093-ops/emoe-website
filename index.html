@@ -12,12 +12,16 @@
   <div class="bg"></div>
 
   <aside class="sidebar">
-    <div class="mark">E<span>.</span></div>
+    <div class="mark" aria-label="Logo E.M.O.E">
+      <span class="mark-symbol">✦</span>
+    </div>
+
     <a href="#accueil" aria-label="Accueil">⌂</a>
     <a href="#ecole" aria-label="À propos">◈</a>
     <a href="#programmes" aria-label="Programmes">▦</a>
     <a href="#admission-info" aria-label="Admissions">✓</a>
     <a href="#contact" aria-label="Contact">✉</a>
+
     <button id="lang" type="button">EN</button>
   </aside>
 
@@ -25,6 +29,7 @@
     <nav>
       <div class="brand">
         <img src="/logo-emoe.jpg" alt="Logo officiel E.M.O.E">
+
         <span>
           E.M.O.E
           <small>École de Ministère Ombre de l’Éternel</small>
@@ -36,6 +41,7 @@
         <a href="#programmes">Programmes</a>
         <a href="#admission-info">Admissions</a>
         <a href="#contact">Contact</a>
+
         <button class="outline" type="button" data-open>
           Candidature ↗
         </button>
@@ -362,15 +368,15 @@
       </div>
 
       <div class="country-list">
-        <span>RDC</span>
-        <span>Ouganda</span>
-        <span>Angola</span>
-        <span>Zambie</span>
-        <span>France</span>
-        <span>Canada</span>
-        <span>Angleterre</span>
-        <span>Chypre</span>
-        <span>États-Unis</span>
+        <span><span class="flag">🇨🇩</span> RDC</span>
+        <span><span class="flag">🇺🇬</span> Ouganda</span>
+        <span><span class="flag">🇦🇴</span> Angola</span>
+        <span><span class="flag">🇿🇲</span> Zambie</span>
+        <span><span class="flag">🇫🇷</span> France</span>
+        <span><span class="flag">🇨🇦</span> Canada</span>
+        <span><span class="flag">🇬🇧</span> Angleterre</span>
+        <span><span class="flag">🇨🇾</span> Chypre</span>
+        <span><span class="flag">🇺🇸</span> États-Unis</span>
       </div>
     </section>
 
@@ -424,10 +430,45 @@
         </h2>
       </div>
 
-      <div class="social-list">
-        <p>Facebook : École Ministère Ombre L’Éternel</p>
-        <p>Instagram : École de Ministère Ombre de l’Éternel</p>
-        <p>YouTube : École de Ministère Ombre de l’Éternel</p>
+      <div class="social-list" aria-label="Réseaux sociaux">
+        <a
+          href="#"
+          class="social-icon facebook"
+          aria-label="Facebook"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.7.3-1 1-1z"/>
+          </svg>
+        </a>
+
+        <a
+          href="#"
+          class="social-icon instagram"
+          aria-label="Instagram"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1"/>
+          </svg>
+        </a>
+
+        <a
+          href="#"
+          class="social-icon youtube"
+          aria-label="YouTube"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.6 7.2a2.8 2.8 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .4 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.4-4.8z"/>
+            <path class="play" d="m10 9 5 3-5 3z"/>
+          </svg>
+        </a>
       </div>
     </section>
 
