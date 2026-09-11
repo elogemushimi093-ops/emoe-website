@@ -347,3 +347,7 @@ if (contactForm) {
 }
 
 translatePage();
+
+
+
+
